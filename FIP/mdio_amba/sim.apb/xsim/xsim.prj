@@ -1,0 +1,6 @@
+verilog work \
+	-i ../../bench.apb/verilog\
+        -d SIM -d VCD -d VIVADO -d XSIM_PROTECTED\
+           ../../bench.apb/verilog/top.v\
+           ../../bench.apb/verilog/mdio_slave.v\
+           ../../rtl/verilog/mdio_apb_xsim.vp

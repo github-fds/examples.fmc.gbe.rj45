@@ -1,0 +1,10 @@
+//--------------------------------------------------------------------
++define+VCD+SIM+VIVADO+AMBA_AXI4
+//--------------------------------------------------------------------
++incdir+../../bench.apb/verilog
+        ../../bench.apb/verilog/top.v
+        ../../bench.apb/verilog/mdio_slave.v
+//-----------------------------------------
++incdir+../../rtl/verilog
+        ../../rtl/verilog/mdio_apb_modelsim_vivado.vp
+//-----------------------------------------

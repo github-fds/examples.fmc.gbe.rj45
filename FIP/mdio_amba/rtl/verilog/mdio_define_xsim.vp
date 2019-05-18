@@ -1,0 +1,44 @@
+`pragma protect begin_protected
+`pragma protect version = 2
+`pragma protect encrypt_agent = "XILINX"
+`pragma protect encrypt_agent_info = "Xilinx Encryption Tool 2015"
+`pragma protect begin_commonblock
+`pragma protect control error_handling = "delegated"
+`pragma protect control decryption=(activity==simulation) ? "true" : "true"
+`pragma protect end_commonblock
+`pragma protect begin_toolblock
+`pragma protect rights_digest_method="sha256"
+`pragma protect key_keyowner = "Xilinx", key_keyname= "xilinxt_2017_05", key_method = "rsa", key_block
+TFZhUNMaSf3sZbz+N78RPpmfngQZIS3drmlL2z8GUn/s6aOeUq23d1eYbhLlFF3Yr3D8aXhvh+hj
+xqOJbBmqtdZ2CRIANY1gJqj6Ba+8brNbXUHeI/3Fex1Tbgau3ObuxOBlhkZs8ubrRJ8ZaPsN5E5h
+w7zM3kmj7RGWcULRlIFWIhECEY7n97/KpHHdNPhYo1YXLhPPLdG3oWZ3GdssDqU2wHQvujb6a4Pr
+HZstM+MUcBsvNrtcloNJGdrzQ0D5iMP/ZlZXbIxUtN95TFWp6VT2c3mnivrWN1UFIT41cA4lFxQM
+H9Q6Uk2zVTHr65seIH176VItqQjSz5WMW3SNIQ==
+
+`pragma protect control xilinx_configuration_visible = "true"
+`pragma protect control xilinx_enable_modification = "true"
+`pragma protect control xilinx_enable_probing = "true"
+`pragma protect control xilinx_enable_netlist_export = "true"
+`pragma protect control xilinx_enable_bitstream = "true"
+`pragma protect control decryption=(xilinx_activity==simulation) ? "true" : "true"
+`pragma protect end_toolblock="AjU8Qjn+E4aF808asHWYwYDV3e2TrY8eEGCGfnAys6A="
+`pragma protect data_method = "AES128-CBC"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 880)
+`pragma protect data_block
+gXM2Q5SUK45Ll2G7gAybLD5oRShZF7J1FJxAuagLzFjRjjMpRgmZ9ZIfgMYnQmcqifB6N3sR1vkX
+Swx3outt4vBTch7bKbi6uTbSaRc3PL/Ik3ju0ahdeHK0zIsjZszCXgtPyNmAVteiAN7o/6Xt5mC+
+M89f8AGAYgjUF6N+3qZG51hu4kKhK1Dh5bqGgyAAPCt17+tFc4RpRFBCwkJGo/6XB3yJrrnhCCe4
+tQa996nW2ErBnnvn9BKAyCuFtNg+Jy+lM4yD+a9t87Sm1LPakM16rnAvr12QieZGIrCQJc7QIJa8
+C8WLO5dcjI8CiV/jzBhcklWBYcR/LnSIMss/DMdKlA6kD/XLSxDxUQQ+NFmGDGuUd96+wOxVtYQv
+6lw8yn+PSxlnkQU7cPoq7+muxQCTW0uU9SyX9HkewrGIXyyix/V2ys8+cku9cOCCn+FkP7piA9J1
+Ecavjfft7zoIrqnkc8lrR192sCTeHs+dhkdMLVsIG1zLe2Chhk9nE6NVEGBkxo/3vuJSKYFUhqMa
+nK75vCyPoFd6oDXT5Vi9Q5JuxCpv4208Bcy9y9GgIsicHrE1siGeKFrsHMx27CcWgStZXg8Zk1AF
+zv//5xCIANCOU/jP4utolLVKruNEJcTcSsqLFAWF06mo+snX4tOr0baECvgvmt8If6EpuQ7phNzN
+jGYNob7rtMB8C2urcjROmHj+rt38lMN/bPOgYrGon8PpBWvBudhHl3Y1uIEiFeuluJ1LNPEXrVSU
+61X1AHRJ9ZSzQ+YsFxo7wnrztz5g2vQivJO6acP1L9w1tcCd0eloTUcXA5NdPC6tyszFINuX1SY8
+/xvRXF3JX1jq6+jbUvvDJOgAnTi3Fca3Ouubk6gtbp261tCbcyaFTvtGWumXyQXfsawj4vMOai+2
+k8nkBLlFOiBrjIZB+UgriG4ZeTWLgbTRQc1ZBMTjjIldh15aGxdVUia6XWEG+ghrwuniL3gpYkTt
+lkwKgC7dC3EL2ALzfkckCD9lzYpaUNQSiuXBa/oHGfis6ZJp4M5K5RsMGIGKOQPKIA7iVYVecnUJ
+umxS9OLQpEoKLoptmlaWVmfyq+3P9A29Cv13PWpZyT4qdtTYiqh/Yx3jjbF0KjTjOU3q49aW8bxc
+H5AX5hOmR1dntSZZaHsO5X2PpcnQWwtaeA==
+`pragma protect end_protected

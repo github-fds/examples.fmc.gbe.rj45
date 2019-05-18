@@ -1,0 +1,13 @@
+verilog work \
+        -d SIM -d VIVADO -d AMBA_AXI4 -d XSIM_PROTECTED\
+	-i ../../bench/verilog\
+        -i ../../design/verilog\
+        -i $FIP_HOME/gig_eth_hsr/rtl/verilog\
+        -i $FIP_HOME/gig_eth_hsr/fifo_async/$FPGA_TYPE/$VIVADO\
+        -i $FIP_HOME/gig_eth_hsr/fifo_sync/$FPGA_TYPE/$VIVADO\
+           ./sim_define.v\
+           ../../bench/verilog/top.v\
+           ../../bench/verilog/hsr_node.v\
+           ../../design/verilog/fpga.v\
+           $FIP_HOME/gig_eth_hsr/rtl/verilog/gig_eth_hsr_redbox_xsim.vp
+

@@ -1,0 +1,18 @@
+verilog work \
+        -d SIM -d VIVADO -d AMBA_AXI4 -d XSIM_PROTECTED\
+	-i ../../bench/verilog\
+	-i ../../../../../gmii_phy/beh/verilog\
+        -i ../../../mem_axi_dual/bram_true_dual_port/$FPGA_TYPE/$VIVADO\
+        -i ../../../mem_axi_dual/rtl/verilog\
+        -i ../../fifo_async/$FPGA_TYPE/$VIVADO\
+        -i ../../rtl/verilog/gig_eth_mac_core\
+        -i ../../rtl/verilog\
+           ./sim_define.v\
+           ../../bench/verilog/top.v\
+           ../../bench/verilog/tester_tx.v\
+           ../../bench/verilog/tester_rx.v\
+           ../../bench/verilog/axi_switch_m2s3.v\
+           ../../../gmii_phy/beh/verilog/gmii_phy.v\
+           ../../../mem_axi_dual/rtl/verilog/bram_axi_dual.v\
+           ../../../gig_eth_mac/rtl/verilog/gig_eth_mac_axi_xsim.vp
+

@@ -1,0 +1,5510 @@
+// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// --------------------------------------------------------------------------------
+// Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
+// Date        : Tue May 14 21:32:37 2019
+// Host        : AndoUbuntu running 64-bit Ubuntu 16.04.6 LTS
+// Command     : write_verilog -force -mode funcsim mdio_apb.vm
+// Design      : mdio_apb
+// Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
+//               or synthesized. This netlist cannot be used for SDF annotated simulation.
+// Device      : xc7z020clg484-1
+// --------------------------------------------------------------------------------
+`timescale 1 ps / 1 ps
+
+(* P_CLK_FREQ = "50000000" *) (* P_MDC_FREQ = "2000000" *) (* T_ADDR_WID = "8" *) 
+(* NotValidForBitStream *)
+module mdio_apb
+   (PRESETn,
+    PCLK,
+    PSEL,
+    PENABLE,
+    PADDR,
+    PWRITE,
+    PWDATA,
+    PRDATA,
+    IRQ,
+    MDC,
+    MDIO_I,
+    MDIO_O,
+    MDIO_T);
+  input PRESETn;
+  input PCLK;
+  input PSEL;
+  input PENABLE;
+  input [31:0]PADDR;
+  input PWRITE;
+  input [31:0]PWDATA;
+  output [31:0]PRDATA;
+  output IRQ;
+  output MDC;
+  input MDIO_I;
+  output MDIO_O;
+  output MDIO_T;
+
+  wire IRQ;
+  wire MDC;
+  wire MDIO_ACK;
+  wire [15:0]MDIO_CLKDIV;
+  wire MDIO_DONE;
+  wire MDIO_ENABLE;
+  wire MDIO_GO;
+  wire MDIO_GO_RD;
+  wire MDIO_GO_WR;
+  wire MDIO_I;
+  wire MDIO_O;
+  wire [4:1]MDIO_PHYADR;
+  wire [15:0]MDIO_RDATA;
+  wire MDIO_T;
+  wire MDIO_WR;
+  wire [31:0]PADDR;
+  wire PCLK;
+  wire PENABLE;
+  wire [31:0]PRDATA;
+  wire PRESETn;
+  wire PSEL;
+  wire [31:0]PWDATA;
+  wire PWRITE;
+  wire [15:0]count;
+  wire csr_mdio_rd_addr;
+  wire csr_mdio_wr_data;
+  wire [2:1]p_0_in;
+  wire [0:0]p_0_in_0;
+  wire [0:0]p_1_in;
+  wire togN;
+  wire togP11_out;
+  wire togPN;
+  wire u_core_n_26;
+  wire u_core_n_27;
+  wire u_core_n_28;
+  wire u_core_n_29;
+  wire u_core_n_3;
+  wire u_core_n_30;
+  wire u_core_n_31;
+  wire u_core_n_32;
+  wire u_core_n_33;
+  wire u_core_n_34;
+  wire u_core_n_35;
+  wire u_core_n_36;
+  wire u_core_n_37;
+  wire u_core_n_38;
+  wire u_core_n_39;
+  wire u_core_n_40;
+  wire u_core_n_41;
+  wire u_core_n_42;
+  wire u_core_n_59;
+  wire u_core_n_60;
+  wire u_core_n_61;
+  wire u_core_n_62;
+  wire u_core_n_63;
+  wire u_core_n_64;
+  wire u_core_n_65;
+  wire u_core_n_66;
+  wire u_core_n_67;
+  wire u_core_n_68;
+  wire u_core_n_69;
+  wire u_core_n_70;
+  wire u_core_n_71;
+  wire u_core_n_72;
+  wire u_core_n_73;
+  wire u_core_n_74;
+  wire u_core_n_75;
+  wire u_core_n_76;
+  wire u_core_n_77;
+  wire u_core_n_9;
+  wire u_csr_n_100;
+  wire u_csr_n_101;
+  wire u_csr_n_102;
+  wire u_csr_n_103;
+  wire u_csr_n_104;
+  wire u_csr_n_105;
+  wire u_csr_n_106;
+  wire u_csr_n_107;
+  wire u_csr_n_108;
+  wire u_csr_n_109;
+  wire u_csr_n_11;
+  wire u_csr_n_110;
+  wire u_csr_n_111;
+  wire u_csr_n_112;
+  wire u_csr_n_113;
+  wire u_csr_n_114;
+  wire u_csr_n_117;
+  wire u_csr_n_118;
+  wire u_csr_n_119;
+  wire u_csr_n_120;
+  wire u_csr_n_121;
+  wire u_csr_n_122;
+  wire u_csr_n_123;
+  wire u_csr_n_124;
+  wire u_csr_n_125;
+  wire u_csr_n_126;
+  wire u_csr_n_127;
+  wire u_csr_n_128;
+  wire u_csr_n_129;
+  wire u_csr_n_13;
+  wire u_csr_n_130;
+  wire u_csr_n_131;
+  wire u_csr_n_132;
+  wire u_csr_n_133;
+  wire u_csr_n_134;
+  wire u_csr_n_135;
+  wire u_csr_n_30;
+  wire u_csr_n_31;
+  wire u_csr_n_32;
+  wire u_csr_n_33;
+  wire u_csr_n_34;
+  wire u_csr_n_35;
+  wire u_csr_n_36;
+  wire u_csr_n_37;
+  wire u_csr_n_38;
+  wire u_csr_n_39;
+  wire u_csr_n_7;
+  wire u_csr_n_73;
+  wire u_csr_n_78;
+  wire u_csr_n_79;
+  wire u_csr_n_8;
+  wire u_csr_n_80;
+  wire u_csr_n_81;
+  wire u_csr_n_82;
+  wire u_csr_n_83;
+  wire u_csr_n_84;
+  wire u_csr_n_85;
+  wire u_csr_n_86;
+  wire u_csr_n_87;
+  wire u_csr_n_88;
+  wire u_csr_n_89;
+  wire u_csr_n_9;
+  wire u_csr_n_90;
+  wire u_csr_n_91;
+  wire u_csr_n_92;
+  wire u_csr_n_93;
+  wire u_csr_n_94;
+  wire u_csr_n_95;
+  wire u_csr_n_96;
+  wire u_csr_n_97;
+  wire u_csr_n_98;
+  wire u_csr_n_99;
+
+  mdio_core u_core
+       (.CO(u_core_n_3),
+        .D(u_core_n_9),
+        .DI({u_csr_n_31,u_csr_n_32,u_csr_n_33,u_csr_n_34}),
+        .E(csr_mdio_wr_data),
+        .MDC(MDC),
+        .MDC_reg_0(u_csr_n_39),
+        .MDIO_ACK(MDIO_ACK),
+        .MDIO_DONE(MDIO_DONE),
+        .MDIO_ENABLE(MDIO_ENABLE),
+        .MDIO_GO(MDIO_GO),
+        .MDIO_GO_RD(MDIO_GO_RD),
+        .MDIO_GO_RD_reg(csr_mdio_rd_addr),
+        .MDIO_GO_WR(MDIO_GO_WR),
+        .MDIO_O(MDIO_O),
+        .MDIO_T(MDIO_T),
+        .MDIO_WR(MDIO_WR),
+        .O({u_core_n_26,u_core_n_27,u_core_n_28,u_core_n_29}),
+        .PADDR(PADDR[2]),
+        .PCLK(PCLK),
+        .PENABLE(PENABLE),
+        .PENABLE_0(u_core_n_41),
+        .PENABLE_1(u_core_n_42),
+        .PSEL(PSEL),
+        .PWRITE(PWRITE),
+        .Q(p_1_in),
+        .\RDATA_reg[15]_0 (MDIO_RDATA),
+        .\RDATA_reg[15]_1 ({u_csr_n_118,u_csr_n_119,u_csr_n_120,u_csr_n_121,u_csr_n_122,u_csr_n_123,u_csr_n_124,u_csr_n_125,u_csr_n_126,u_csr_n_127,u_csr_n_128,u_csr_n_129,u_csr_n_130,u_csr_n_131,u_csr_n_132,u_csr_n_133}),
+        .\T_RDATA[0]_i_2_0 (p_0_in_0),
+        .\T_RDATA_reg[0] (u_csr_n_7),
+        .\T_RDATA_reg[0]_0 (u_csr_n_11),
+        .\T_RDATA_reg[0]_1 (u_csr_n_30),
+        .\T_RDATA_reg[0]_2 (u_csr_n_117),
+        .\T_RDATA_reg[0]_3 (u_csr_n_13),
+        .\T_RDATA_reg[0]_4 (u_csr_n_9),
+        .\T_RDATA_reg[0]_5 (u_csr_n_8),
+        .\count_reg[12]_0 ({u_core_n_34,u_core_n_35,u_core_n_36,u_core_n_37}),
+        .\count_reg[15]_0 (count),
+        .\count_reg[15]_1 ({u_core_n_38,u_core_n_39,u_core_n_40}),
+        .\count_reg[15]_2 (u_csr_n_135),
+        .\count_reg[15]_3 ({u_csr_n_99,u_csr_n_100,u_csr_n_101,u_csr_n_102,u_csr_n_103,u_csr_n_104,u_csr_n_105,u_csr_n_106,u_csr_n_107,u_csr_n_108,u_csr_n_109,u_csr_n_110,u_csr_n_111,u_csr_n_112,u_csr_n_113,u_csr_n_114}),
+        .\count_reg[8]_0 ({u_core_n_30,u_core_n_31,u_core_n_32,u_core_n_33}),
+        .\data_reg[14]_0 ({u_core_n_63,u_core_n_64,u_core_n_65,u_core_n_66,u_core_n_67,u_core_n_68,u_core_n_69,u_core_n_70,u_core_n_71,u_core_n_72,u_core_n_73,u_core_n_74,u_core_n_75,u_core_n_76,u_core_n_77}),
+        .\data_reg[15]_0 ({u_csr_n_78,u_csr_n_79,u_csr_n_80,u_csr_n_81,u_csr_n_82,u_csr_n_83,u_csr_n_84,u_csr_n_85,u_csr_n_86,u_csr_n_87,u_csr_n_88,u_csr_n_89,u_csr_n_90,u_csr_n_91,u_csr_n_92,u_csr_n_93}),
+        .out(p_0_in),
+        .\paddr_reg[0]_0 (u_csr_n_73),
+        .\paddr_reg[4]_0 (MDIO_PHYADR),
+        .\raddr_reg[3]_0 ({u_core_n_59,u_core_n_60,u_core_n_61,u_core_n_62}),
+        .\raddr_reg[4]_0 ({u_csr_n_94,u_csr_n_95,u_csr_n_96,u_csr_n_97,u_csr_n_98}),
+        .togN(togN),
+        .togP11_out(togP11_out),
+        .togPN(togPN),
+        .togPN1_carry__0_0(MDIO_CLKDIV),
+        .togPN_reg_0({u_csr_n_35,u_csr_n_36,u_csr_n_37,u_csr_n_38}),
+        .togPN_reg_1(u_csr_n_134));
+  mdio_csr u_csr
+       (.CO(u_core_n_3),
+        .D(u_core_n_9),
+        .DI({u_csr_n_31,u_csr_n_32,u_csr_n_33,u_csr_n_34}),
+        .E(csr_mdio_rd_addr),
+        .IRQ(IRQ),
+        .MDIO_ACK(MDIO_ACK),
+        .MDIO_DONE(MDIO_DONE),
+        .MDIO_ENABLE(MDIO_ENABLE),
+        .MDIO_GO(MDIO_GO),
+        .MDIO_GO_RD(MDIO_GO_RD),
+        .MDIO_GO_RD_reg_0(u_core_n_42),
+        .MDIO_GO_WR(MDIO_GO_WR),
+        .MDIO_GO_WR_reg_0(u_core_n_41),
+        .MDIO_I(MDIO_I),
+        .\MDIO_PHYADR_reg[0]_0 (u_csr_n_73),
+        .\MDIO_PHYADR_reg[4]_0 (MDIO_PHYADR),
+        .\MDIO_REGADR_reg[4]_0 ({u_csr_n_94,u_csr_n_95,u_csr_n_96,u_csr_n_97,u_csr_n_98}),
+        .\MDIO_WDATA_reg[15]_0 ({u_csr_n_78,u_csr_n_79,u_csr_n_80,u_csr_n_81,u_csr_n_82,u_csr_n_83,u_csr_n_84,u_csr_n_85,u_csr_n_86,u_csr_n_87,u_csr_n_88,u_csr_n_89,u_csr_n_90,u_csr_n_91,u_csr_n_92,u_csr_n_93}),
+        .MDIO_WR(MDIO_WR),
+        .O({u_core_n_26,u_core_n_27,u_core_n_28,u_core_n_29}),
+        .PADDR(PADDR[7:0]),
+        .\PADDR[4]_0 (u_csr_n_117),
+        .PADDR_0_sp_1(u_csr_n_7),
+        .PADDR_2_sp_1(u_csr_n_11),
+        .PADDR_3_sp_1(u_csr_n_13),
+        .PADDR_4_sp_1(u_csr_n_30),
+        .PCLK(PCLK),
+        .PENABLE(PENABLE),
+        .PENABLE_0(csr_mdio_wr_data),
+        .PRDATA(PRDATA),
+        .PRESETn(PRESETn),
+        .PSEL(PSEL),
+        .PSEL_0(u_csr_n_8),
+        .PSEL_1(u_csr_n_9),
+        .PWDATA({PWDATA[31:30],PWDATA[25:0]}),
+        .PWRITE(PWRITE),
+        .Q(p_1_in),
+        .\count_reg[12] ({u_core_n_34,u_core_n_35,u_core_n_36,u_core_n_37}),
+        .\count_reg[15] ({u_core_n_38,u_core_n_39,u_core_n_40}),
+        .\count_reg[8] ({u_core_n_30,u_core_n_31,u_core_n_32,u_core_n_33}),
+        .\csr_mdio_ctl_clk_div_reg[15]_0 (MDIO_CLKDIV),
+        .\csr_mdio_ctl_clk_div_reg[15]_1 ({u_csr_n_35,u_csr_n_36,u_csr_n_37,u_csr_n_38}),
+        .csr_mdio_ctl_en_reg_0(u_csr_n_39),
+        .csr_mdio_ctl_en_reg_1({u_csr_n_99,u_csr_n_100,u_csr_n_101,u_csr_n_102,u_csr_n_103,u_csr_n_104,u_csr_n_105,u_csr_n_106,u_csr_n_107,u_csr_n_108,u_csr_n_109,u_csr_n_110,u_csr_n_111,u_csr_n_112,u_csr_n_113,u_csr_n_114}),
+        .csr_mdio_ctl_en_reg_2({u_csr_n_118,u_csr_n_119,u_csr_n_120,u_csr_n_121,u_csr_n_122,u_csr_n_123,u_csr_n_124,u_csr_n_125,u_csr_n_126,u_csr_n_127,u_csr_n_128,u_csr_n_129,u_csr_n_130,u_csr_n_131,u_csr_n_132,u_csr_n_133}),
+        .csr_mdio_ctl_en_reg_3(u_csr_n_134),
+        .csr_mdio_ctl_rst_reg_0(u_csr_n_135),
+        .\csr_mdio_rd_data_reg[0]_0 (p_0_in_0),
+        .\csr_mdio_rd_data_reg[15]_0 (MDIO_RDATA),
+        .\data_reg[15] ({u_core_n_63,u_core_n_64,u_core_n_65,u_core_n_66,u_core_n_67,u_core_n_68,u_core_n_69,u_core_n_70,u_core_n_71,u_core_n_72,u_core_n_73,u_core_n_74,u_core_n_75,u_core_n_76,u_core_n_77}),
+        .out(p_0_in),
+        .\raddr_reg[4] ({u_core_n_59,u_core_n_60,u_core_n_61,u_core_n_62}),
+        .togN(togN),
+        .togP11_out(togP11_out),
+        .togPN(togPN),
+        .togPN1_carry__0(count));
+endmodule
+
+module mdio_core
+   (out,
+    MDC,
+    CO,
+    togPN,
+    MDIO_DONE,
+    MDIO_ACK,
+    MDIO_O,
+    MDIO_T,
+    D,
+    \count_reg[15]_0 ,
+    O,
+    \count_reg[8]_0 ,
+    \count_reg[12]_0 ,
+    \count_reg[15]_1 ,
+    PENABLE_0,
+    PENABLE_1,
+    \RDATA_reg[15]_0 ,
+    \raddr_reg[3]_0 ,
+    \data_reg[14]_0 ,
+    togP11_out,
+    PCLK,
+    \count_reg[15]_2 ,
+    MDC_reg_0,
+    togN,
+    DI,
+    togPN_reg_0,
+    togPN_reg_1,
+    \T_RDATA_reg[0] ,
+    \T_RDATA_reg[0]_0 ,
+    Q,
+    \T_RDATA_reg[0]_1 ,
+    \T_RDATA_reg[0]_2 ,
+    \T_RDATA_reg[0]_3 ,
+    togPN1_carry__0_0,
+    \T_RDATA_reg[0]_4 ,
+    \T_RDATA_reg[0]_5 ,
+    PADDR,
+    \T_RDATA[0]_i_2_0 ,
+    MDIO_ENABLE,
+    MDIO_WR,
+    MDIO_GO,
+    PENABLE,
+    PWRITE,
+    PSEL,
+    E,
+    MDIO_GO_WR,
+    MDIO_GO_RD_reg,
+    MDIO_GO_RD,
+    \paddr_reg[4]_0 ,
+    \count_reg[15]_3 ,
+    \RDATA_reg[15]_1 ,
+    \paddr_reg[0]_0 ,
+    \raddr_reg[4]_0 ,
+    \data_reg[15]_0 );
+  output [1:0]out;
+  output MDC;
+  output [0:0]CO;
+  output togPN;
+  output MDIO_DONE;
+  output MDIO_ACK;
+  output MDIO_O;
+  output MDIO_T;
+  output [0:0]D;
+  output [15:0]\count_reg[15]_0 ;
+  output [3:0]O;
+  output [3:0]\count_reg[8]_0 ;
+  output [3:0]\count_reg[12]_0 ;
+  output [2:0]\count_reg[15]_1 ;
+  output PENABLE_0;
+  output PENABLE_1;
+  output [15:0]\RDATA_reg[15]_0 ;
+  output [3:0]\raddr_reg[3]_0 ;
+  output [14:0]\data_reg[14]_0 ;
+  input togP11_out;
+  input PCLK;
+  input \count_reg[15]_2 ;
+  input MDC_reg_0;
+  input togN;
+  input [3:0]DI;
+  input [3:0]togPN_reg_0;
+  input togPN_reg_1;
+  input \T_RDATA_reg[0] ;
+  input \T_RDATA_reg[0]_0 ;
+  input [0:0]Q;
+  input \T_RDATA_reg[0]_1 ;
+  input \T_RDATA_reg[0]_2 ;
+  input \T_RDATA_reg[0]_3 ;
+  input [15:0]togPN1_carry__0_0;
+  input \T_RDATA_reg[0]_4 ;
+  input \T_RDATA_reg[0]_5 ;
+  input [0:0]PADDR;
+  input [0:0]\T_RDATA[0]_i_2_0 ;
+  input MDIO_ENABLE;
+  input MDIO_WR;
+  input MDIO_GO;
+  input PENABLE;
+  input PWRITE;
+  input PSEL;
+  input [0:0]E;
+  input MDIO_GO_WR;
+  input [0:0]MDIO_GO_RD_reg;
+  input MDIO_GO_RD;
+  input [3:0]\paddr_reg[4]_0 ;
+  input [15:0]\count_reg[15]_3 ;
+  input [15:0]\RDATA_reg[15]_1 ;
+  input [0:0]\paddr_reg[0]_0 ;
+  input [4:0]\raddr_reg[4]_0 ;
+  input [15:0]\data_reg[15]_0 ;
+
+  wire ACK_i_1_n_0;
+  wire BUSY_i_1_n_0;
+  wire BUSY_i_2_n_0;
+  wire BUSY_i_3_n_0;
+  wire [0:0]CO;
+  wire [0:0]D;
+  wire [3:0]DI;
+  wire DONE_i_1_n_0;
+  wire DONE_i_2_n_0;
+  wire DONE_i_3_n_0;
+  wire DONE_i_4_n_0;
+  wire [0:0]E;
+  wire MDC;
+  wire MDC_reg_0;
+  wire MDIO_ACK;
+  wire MDIO_BUSY;
+  wire MDIO_DONE;
+  wire MDIO_ENABLE;
+  wire MDIO_GO;
+  wire MDIO_GO_RD;
+  wire [0:0]MDIO_GO_RD_reg;
+  wire MDIO_GO_WR;
+  wire MDIO_O;
+  wire MDIO_O_i_1_n_0;
+  wire MDIO_T;
+  wire MDIO_T_i_1_n_0;
+  wire MDIO_WR;
+  wire [3:0]O;
+  wire [0:0]PADDR;
+  wire PCLK;
+  wire PENABLE;
+  wire PENABLE_0;
+  wire PENABLE_1;
+  wire PSEL;
+  wire PWRITE;
+  wire [0:0]Q;
+  wire \RDATA[15]_i_1_n_0 ;
+  wire [15:0]\RDATA_reg[15]_0 ;
+  wire [15:0]\RDATA_reg[15]_1 ;
+  wire [0:0]\T_RDATA[0]_i_2_0 ;
+  wire \T_RDATA[0]_i_2_n_0 ;
+  wire \T_RDATA[0]_i_4_n_0 ;
+  wire \T_RDATA_reg[0] ;
+  wire \T_RDATA_reg[0]_0 ;
+  wire \T_RDATA_reg[0]_1 ;
+  wire \T_RDATA_reg[0]_2 ;
+  wire \T_RDATA_reg[0]_3 ;
+  wire \T_RDATA_reg[0]_4 ;
+  wire \T_RDATA_reg[0]_5 ;
+  wire \cnt[0]_i_1_n_0 ;
+  wire \cnt[0]_i_2_n_0 ;
+  wire \cnt[0]_i_3_n_0 ;
+  wire \cnt[0]_i_4_n_0 ;
+  wire \cnt[0]_i_5_n_0 ;
+  wire \cnt[0]_i_6_n_0 ;
+  wire \cnt[0]_i_7_n_0 ;
+  wire \cnt[0]_i_8_n_0 ;
+  wire \cnt[0]_i_9_n_0 ;
+  wire \cnt[1]_i_1_n_0 ;
+  wire \cnt[1]_i_3_n_0 ;
+  wire \cnt[1]_i_4_n_0 ;
+  wire \cnt[1]_i_5_n_0 ;
+  wire \cnt[1]_i_6_n_0 ;
+  wire \cnt[2]_i_1_n_0 ;
+  wire \cnt[3]_i_1_n_0 ;
+  wire \cnt[4]_i_1_n_0 ;
+  wire \cnt[4]_i_2_n_0 ;
+  wire \cnt[4]_i_3_n_0 ;
+  wire \cnt[5]_i_1_n_0 ;
+  wire \cnt[5]_i_2_n_0 ;
+  wire \cnt[5]_i_3_n_0 ;
+  wire \cnt[5]_i_4_n_0 ;
+  wire \cnt[5]_i_5_n_0 ;
+  wire \cnt[5]_i_6_n_0 ;
+  wire \cnt[5]_i_7_n_0 ;
+  wire \cnt[5]_i_8_n_0 ;
+  wire \cnt[5]_i_9_n_0 ;
+  wire \cnt_reg[1]_i_2_n_0 ;
+  wire \cnt_reg_n_0_[0] ;
+  wire \cnt_reg_n_0_[1] ;
+  wire \cnt_reg_n_0_[2] ;
+  wire \cnt_reg_n_0_[3] ;
+  wire \cnt_reg_n_0_[4] ;
+  wire \cnt_reg_n_0_[5] ;
+  wire [3:0]\count_reg[12]_0 ;
+  wire \count_reg[12]_i_2_n_0 ;
+  wire \count_reg[12]_i_2_n_1 ;
+  wire \count_reg[12]_i_2_n_2 ;
+  wire \count_reg[12]_i_2_n_3 ;
+  wire [15:0]\count_reg[15]_0 ;
+  wire [2:0]\count_reg[15]_1 ;
+  wire \count_reg[15]_2 ;
+  wire [15:0]\count_reg[15]_3 ;
+  wire \count_reg[15]_i_2_n_2 ;
+  wire \count_reg[15]_i_2_n_3 ;
+  wire \count_reg[4]_i_2_n_0 ;
+  wire \count_reg[4]_i_2_n_1 ;
+  wire \count_reg[4]_i_2_n_2 ;
+  wire \count_reg[4]_i_2_n_3 ;
+  wire [3:0]\count_reg[8]_0 ;
+  wire \count_reg[8]_i_2_n_0 ;
+  wire \count_reg[8]_i_2_n_1 ;
+  wire \count_reg[8]_i_2_n_2 ;
+  wire \count_reg[8]_i_2_n_3 ;
+  wire \data[15]_i_1_n_0 ;
+  wire \data[15]_i_3_n_0 ;
+  wire \data[15]_i_4_n_0 ;
+  wire \data[15]_i_5_n_0 ;
+  wire [14:0]\data_reg[14]_0 ;
+  wire [15:0]\data_reg[15]_0 ;
+  wire \data_reg_n_0_[15] ;
+  wire mdio_i_1_n_0;
+  wire mdio_i_2_n_0;
+  wire mdio_i_3_n_0;
+  wire mdio_i_4_n_0;
+  wire mdio_i_5_n_0;
+  wire mdio_i_6_n_0;
+  wire mdio_i_7_n_0;
+  wire mdio_oe0_out;
+  wire mdio_oe_i_1_n_0;
+  wire mdio_oe_i_3_n_0;
+  wire mdio_oe_i_4_n_0;
+  wire mdio_oe_i_5_n_0;
+  wire mdio_oe_reg_n_0;
+  wire mdio_reg_n_0;
+  wire p_1_in;
+  wire \paddr[1]_i_1_n_0 ;
+  wire \paddr[2]_i_1_n_0 ;
+  wire \paddr[3]_i_1_n_0 ;
+  wire \paddr[4]_i_1_n_0 ;
+  wire \paddr[4]_i_2_n_0 ;
+  wire \paddr[4]_i_3_n_0 ;
+  wire [0:0]\paddr_reg[0]_0 ;
+  wire [3:0]\paddr_reg[4]_0 ;
+  wire \paddr_reg_n_0_[0] ;
+  wire \paddr_reg_n_0_[1] ;
+  wire \paddr_reg_n_0_[2] ;
+  wire \paddr_reg_n_0_[3] ;
+  wire \raddr[4]_i_1_n_0 ;
+  wire \raddr[4]_i_3_n_0 ;
+  wire \raddr[4]_i_4_n_0 ;
+  wire \raddr[4]_i_5_n_0 ;
+  wire [3:0]\raddr_reg[3]_0 ;
+  wire [4:0]\raddr_reg[4]_0 ;
+  wire \raddr_reg_n_0_[4] ;
+  (* RTL_KEEP = "true" *) wire [3:0]state;
+  wire \state[0]_i_1_n_0 ;
+  wire \state[0]_i_2_n_0 ;
+  wire \state[0]_i_3_n_0 ;
+  wire \state[0]_i_4_n_0 ;
+  wire \state[0]_i_5_n_0 ;
+  wire \state[0]_i_6_n_0 ;
+  wire \state[1]_i_1_n_0 ;
+  wire \state[1]_i_2_n_0 ;
+  wire \state[1]_i_3_n_0 ;
+  wire \state[1]_i_4_n_0 ;
+  wire \state[2]_i_1_n_0 ;
+  wire \state[2]_i_2_n_0 ;
+  wire \state[3]_i_1_n_0 ;
+  wire \state[3]_i_2_n_0 ;
+  wire \state[3]_i_3_n_0 ;
+  wire togN;
+  wire togN_reg_n_0;
+  wire togP;
+  wire togP11_out;
+  wire togPN;
+  wire [15:0]togPN1_carry__0_0;
+  wire togPN1_carry__0_n_1;
+  wire togPN1_carry__0_n_2;
+  wire togPN1_carry__0_n_3;
+  wire togPN1_carry_i_5__0_n_0;
+  wire togPN1_carry_i_5_n_0;
+  wire togPN1_carry_i_6__0_n_0;
+  wire togPN1_carry_i_6_n_0;
+  wire togPN1_carry_i_7__0_n_0;
+  wire togPN1_carry_i_7_n_0;
+  wire togPN1_carry_i_8__0_n_0;
+  wire togPN1_carry_i_8_n_0;
+  wire togPN1_carry_n_0;
+  wire togPN1_carry_n_1;
+  wire togPN1_carry_n_2;
+  wire togPN1_carry_n_3;
+  wire [3:0]togPN_reg_0;
+  wire togPN_reg_1;
+  wire [3:2]\NLW_count_reg[15]_i_2_CO_UNCONNECTED ;
+  wire [3:3]\NLW_count_reg[15]_i_2_O_UNCONNECTED ;
+  wire [3:0]NLW_togPN1_carry_O_UNCONNECTED;
+  wire [3:0]NLW_togPN1_carry__0_O_UNCONNECTED;
+
+  assign out[1:0] = state[2:1];
+  LUT6 #(
+    .INIT(64'hAA8AFFFFAA8A0000)) 
+    ACK_i_1
+       (.I0(MDIO_ENABLE),
+        .I1(state[1]),
+        .I2(state[0]),
+        .I3(MDIO_GO),
+        .I4(DONE_i_2_n_0),
+        .I5(MDIO_ACK),
+        .O(ACK_i_1_n_0));
+  FDCE ACK_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(ACK_i_1_n_0),
+        .Q(MDIO_ACK));
+  LUT6 #(
+    .INIT(64'h1000FFFF10000000)) 
+    BUSY_i_1
+       (.I0(state[3]),
+        .I1(state[2]),
+        .I2(MDIO_GO),
+        .I3(MDIO_ENABLE),
+        .I4(BUSY_i_2_n_0),
+        .I5(MDIO_BUSY),
+        .O(BUSY_i_1_n_0));
+  LUT6 #(
+    .INIT(64'h81000000FFFFFFFF)) 
+    BUSY_i_2
+       (.I0(state[1]),
+        .I1(state[2]),
+        .I2(state[0]),
+        .I3(togP),
+        .I4(BUSY_i_3_n_0),
+        .I5(MDIO_ENABLE),
+        .O(BUSY_i_2_n_0));
+  LUT5 #(
+    .INIT(32'h00FCFCAA)) 
+    BUSY_i_3
+       (.I0(MDIO_GO),
+        .I1(\cnt_reg_n_0_[4] ),
+        .I2(\cnt_reg_n_0_[5] ),
+        .I3(state[3]),
+        .I4(state[2]),
+        .O(BUSY_i_3_n_0));
+  FDCE BUSY_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(BUSY_i_1_n_0),
+        .Q(MDIO_BUSY));
+  LUT6 #(
+    .INIT(64'hAA8AFFFFAA8A0000)) 
+    DONE_i_1
+       (.I0(MDIO_ENABLE),
+        .I1(state[1]),
+        .I2(state[0]),
+        .I3(MDIO_GO),
+        .I4(DONE_i_2_n_0),
+        .I5(MDIO_DONE),
+        .O(DONE_i_1_n_0));
+  LUT6 #(
+    .INIT(64'h08800000FFFFFFFF)) 
+    DONE_i_2
+       (.I0(DONE_i_3_n_0),
+        .I1(togP),
+        .I2(state[3]),
+        .I3(state[2]),
+        .I4(DONE_i_4_n_0),
+        .I5(MDIO_ENABLE),
+        .O(DONE_i_2_n_0));
+  LUT5 #(
+    .INIT(32'hABABABAA)) 
+    DONE_i_3
+       (.I0(state[0]),
+        .I1(state[2]),
+        .I2(state[1]),
+        .I3(\cnt_reg_n_0_[4] ),
+        .I4(\cnt_reg_n_0_[5] ),
+        .O(DONE_i_3_n_0));
+  LUT6 #(
+    .INIT(64'hEFEF0F0F0F0F0FFF)) 
+    DONE_i_4
+       (.I0(\cnt_reg_n_0_[4] ),
+        .I1(\cnt_reg_n_0_[5] ),
+        .I2(state[0]),
+        .I3(MDIO_GO),
+        .I4(state[1]),
+        .I5(state[2]),
+        .O(DONE_i_4_n_0));
+  FDCE DONE_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(DONE_i_1_n_0),
+        .Q(MDIO_DONE));
+  FDCE MDC_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(MDC_reg_0),
+        .Q(MDC));
+  LUT6 #(
+    .INIT(64'h808080FF80800000)) 
+    MDIO_GO_RD_i_1
+       (.I0(PENABLE),
+        .I1(PWRITE),
+        .I2(PSEL),
+        .I3(MDIO_DONE),
+        .I4(MDIO_GO_RD_reg),
+        .I5(MDIO_GO_RD),
+        .O(PENABLE_1));
+  LUT6 #(
+    .INIT(64'h808080FF80800000)) 
+    MDIO_GO_WR_i_1
+       (.I0(PENABLE),
+        .I1(PWRITE),
+        .I2(PSEL),
+        .I3(MDIO_DONE),
+        .I4(E),
+        .I5(MDIO_GO_WR),
+        .O(PENABLE_0));
+  LUT4 #(
+    .INIT(16'hB080)) 
+    MDIO_O_i_1
+       (.I0(mdio_reg_n_0),
+        .I1(togN_reg_n_0),
+        .I2(MDIO_ENABLE),
+        .I3(MDIO_O),
+        .O(MDIO_O_i_1_n_0));
+  FDCE MDIO_O_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(MDIO_O_i_1_n_0),
+        .Q(MDIO_O));
+  LUT4 #(
+    .INIT(16'h7F4F)) 
+    MDIO_T_i_1
+       (.I0(mdio_oe_reg_n_0),
+        .I1(togN_reg_n_0),
+        .I2(MDIO_ENABLE),
+        .I3(MDIO_T),
+        .O(MDIO_T_i_1_n_0));
+  FDPE MDIO_T_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .D(MDIO_T_i_1_n_0),
+        .PRE(\count_reg[15]_2 ),
+        .Q(MDIO_T));
+  LUT6 #(
+    .INIT(64'h00000020FFFFFFFF)) 
+    \RDATA[15]_i_1 
+       (.I0(togP),
+        .I1(state[2]),
+        .I2(state[3]),
+        .I3(state[0]),
+        .I4(state[1]),
+        .I5(MDIO_ENABLE),
+        .O(\RDATA[15]_i_1_n_0 ));
+  FDCE \RDATA_reg[0] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [0]),
+        .Q(\RDATA_reg[15]_0 [0]));
+  FDCE \RDATA_reg[10] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [10]),
+        .Q(\RDATA_reg[15]_0 [10]));
+  FDCE \RDATA_reg[11] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [11]),
+        .Q(\RDATA_reg[15]_0 [11]));
+  FDCE \RDATA_reg[12] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [12]),
+        .Q(\RDATA_reg[15]_0 [12]));
+  FDCE \RDATA_reg[13] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [13]),
+        .Q(\RDATA_reg[15]_0 [13]));
+  FDCE \RDATA_reg[14] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [14]),
+        .Q(\RDATA_reg[15]_0 [14]));
+  FDCE \RDATA_reg[15] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [15]),
+        .Q(\RDATA_reg[15]_0 [15]));
+  FDCE \RDATA_reg[1] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [1]),
+        .Q(\RDATA_reg[15]_0 [1]));
+  FDCE \RDATA_reg[2] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [2]),
+        .Q(\RDATA_reg[15]_0 [2]));
+  FDCE \RDATA_reg[3] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [3]),
+        .Q(\RDATA_reg[15]_0 [3]));
+  FDCE \RDATA_reg[4] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [4]),
+        .Q(\RDATA_reg[15]_0 [4]));
+  FDCE \RDATA_reg[5] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [5]),
+        .Q(\RDATA_reg[15]_0 [5]));
+  FDCE \RDATA_reg[6] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [6]),
+        .Q(\RDATA_reg[15]_0 [6]));
+  FDCE \RDATA_reg[7] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [7]),
+        .Q(\RDATA_reg[15]_0 [7]));
+  FDCE \RDATA_reg[8] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [8]),
+        .Q(\RDATA_reg[15]_0 [8]));
+  FDCE \RDATA_reg[9] 
+       (.C(PCLK),
+        .CE(\RDATA[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\RDATA_reg[15]_1 [9]),
+        .Q(\RDATA_reg[15]_0 [9]));
+  LUT6 #(
+    .INIT(64'h8A8A8A8A88888A88)) 
+    \T_RDATA[0]_i_1 
+       (.I0(\T_RDATA_reg[0] ),
+        .I1(\T_RDATA[0]_i_2_n_0 ),
+        .I2(\T_RDATA_reg[0]_0 ),
+        .I3(Q),
+        .I4(\T_RDATA_reg[0]_1 ),
+        .I5(\T_RDATA_reg[0]_2 ),
+        .O(D));
+  LUT6 #(
+    .INIT(64'hABAAABABABAABBBB)) 
+    \T_RDATA[0]_i_2 
+       (.I0(\T_RDATA[0]_i_4_n_0 ),
+        .I1(\T_RDATA_reg[0]_3 ),
+        .I2(\T_RDATA_reg[0]_0 ),
+        .I3(togPN1_carry__0_0[0]),
+        .I4(\T_RDATA_reg[0]_4 ),
+        .I5(\T_RDATA_reg[0]_5 ),
+        .O(\T_RDATA[0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h8080800000008000)) 
+    \T_RDATA[0]_i_4 
+       (.I0(\T_RDATA_reg[0]_5 ),
+        .I1(\T_RDATA_reg[0]_4 ),
+        .I2(PADDR),
+        .I3(MDIO_BUSY),
+        .I4(\T_RDATA_reg[0]_3 ),
+        .I5(\T_RDATA[0]_i_2_0 ),
+        .O(\T_RDATA[0]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h20AA2020AAAAAAAA)) 
+    \cnt[0]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\cnt[0]_i_2_n_0 ),
+        .I2(state[3]),
+        .I3(\cnt[0]_i_3_n_0 ),
+        .I4(\cnt[0]_i_4_n_0 ),
+        .I5(\cnt[0]_i_5_n_0 ),
+        .O(\cnt[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \cnt[0]_i_2 
+       (.I0(\cnt_reg_n_0_[0] ),
+        .I1(\cnt_reg_n_0_[5] ),
+        .I2(\cnt_reg_n_0_[4] ),
+        .O(\cnt[0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF0400040F)) 
+    \cnt[0]_i_3 
+       (.I0(\cnt_reg_n_0_[5] ),
+        .I1(\cnt_reg_n_0_[0] ),
+        .I2(state[1]),
+        .I3(state[0]),
+        .I4(MDIO_GO),
+        .I5(\cnt[0]_i_6_n_0 ),
+        .O(\cnt[0]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFDFFFFFFFFFF)) 
+    \cnt[0]_i_4 
+       (.I0(\cnt[1]_i_3_n_0 ),
+        .I1(\cnt_reg_n_0_[3] ),
+        .I2(\cnt_reg_n_0_[2] ),
+        .I3(\cnt_reg_n_0_[0] ),
+        .I4(\cnt_reg_n_0_[1] ),
+        .I5(state[1]),
+        .O(\cnt[0]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFF070FF70)) 
+    \cnt[0]_i_5 
+       (.I0(state[0]),
+        .I1(\cnt[1]_i_3_n_0 ),
+        .I2(\cnt[0]_i_7_n_0 ),
+        .I3(\cnt_reg_n_0_[0] ),
+        .I4(\cnt[0]_i_8_n_0 ),
+        .I5(\cnt[0]_i_9_n_0 ),
+        .O(\cnt[0]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \cnt[0]_i_6 
+       (.I0(state[3]),
+        .I1(state[2]),
+        .O(\cnt[0]_i_6_n_0 ));
+  LUT3 #(
+    .INIT(8'h8C)) 
+    \cnt[0]_i_7 
+       (.I0(state[0]),
+        .I1(state[1]),
+        .I2(\cnt[5]_i_7_n_0 ),
+        .O(\cnt[0]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFBFFFBFFFBFBFB)) 
+    \cnt[0]_i_8 
+       (.I0(state[1]),
+        .I1(\cnt[1]_i_3_n_0 ),
+        .I2(\cnt_reg_n_0_[3] ),
+        .I3(\cnt_reg_n_0_[2] ),
+        .I4(\cnt_reg_n_0_[0] ),
+        .I5(\cnt_reg_n_0_[1] ),
+        .O(\cnt[0]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'hB)) 
+    \cnt[0]_i_9 
+       (.I0(state[3]),
+        .I1(state[2]),
+        .O(\cnt[0]_i_9_n_0 ));
+  LUT6 #(
+    .INIT(64'h02A2A20202020202)) 
+    \cnt[1]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\cnt_reg[1]_i_2_n_0 ),
+        .I2(state[3]),
+        .I3(\cnt_reg_n_0_[1] ),
+        .I4(\cnt_reg_n_0_[0] ),
+        .I5(\cnt[1]_i_3_n_0 ),
+        .O(\cnt[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    \cnt[1]_i_3 
+       (.I0(\cnt_reg_n_0_[4] ),
+        .I1(\cnt_reg_n_0_[5] ),
+        .O(\cnt[1]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAFFAACFAACFAAFF)) 
+    \cnt[1]_i_4 
+       (.I0(\cnt[5]_i_7_n_0 ),
+        .I1(\cnt_reg_n_0_[5] ),
+        .I2(state[0]),
+        .I3(state[1]),
+        .I4(\cnt_reg_n_0_[1] ),
+        .I5(\cnt_reg_n_0_[0] ),
+        .O(\cnt[1]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h3FFFBBBB3F00BBBB)) 
+    \cnt[1]_i_5 
+       (.I0(\cnt[5]_i_4_n_0 ),
+        .I1(\cnt[1]_i_6_n_0 ),
+        .I2(\cnt[1]_i_3_n_0 ),
+        .I3(state[0]),
+        .I4(state[1]),
+        .I5(\cnt[5]_i_7_n_0 ),
+        .O(\cnt[1]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT2 #(
+    .INIT(4'h6)) 
+    \cnt[1]_i_6 
+       (.I0(\cnt_reg_n_0_[1] ),
+        .I1(\cnt_reg_n_0_[0] ),
+        .O(\cnt[1]_i_6_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT4 #(
+    .INIT(16'h2A80)) 
+    \cnt[2]_i_1 
+       (.I0(\cnt[4]_i_2_n_0 ),
+        .I1(\cnt_reg_n_0_[0] ),
+        .I2(\cnt_reg_n_0_[1] ),
+        .I3(\cnt_reg_n_0_[2] ),
+        .O(\cnt[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT5 #(
+    .INIT(32'h2AAA8000)) 
+    \cnt[3]_i_1 
+       (.I0(\cnt[4]_i_2_n_0 ),
+        .I1(\cnt_reg_n_0_[0] ),
+        .I2(\cnt_reg_n_0_[1] ),
+        .I3(\cnt_reg_n_0_[2] ),
+        .I4(\cnt_reg_n_0_[3] ),
+        .O(\cnt[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h2AAAAAAA80000000)) 
+    \cnt[4]_i_1 
+       (.I0(\cnt[4]_i_2_n_0 ),
+        .I1(\cnt_reg_n_0_[2] ),
+        .I2(\cnt_reg_n_0_[1] ),
+        .I3(\cnt_reg_n_0_[0] ),
+        .I4(\cnt_reg_n_0_[3] ),
+        .I5(\cnt_reg_n_0_[4] ),
+        .O(\cnt[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0F000E0E00000000)) 
+    \cnt[4]_i_2 
+       (.I0(\cnt[5]_i_5_n_0 ),
+        .I1(state[2]),
+        .I2(\cnt[4]_i_3_n_0 ),
+        .I3(\cnt[1]_i_3_n_0 ),
+        .I4(state[3]),
+        .I5(MDIO_ENABLE),
+        .O(\cnt[4]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h00002EEE00000000)) 
+    \cnt[4]_i_3 
+       (.I0(\cnt[5]_i_4_n_0 ),
+        .I1(state[1]),
+        .I2(state[0]),
+        .I3(\cnt[1]_i_3_n_0 ),
+        .I4(state[3]),
+        .I5(state[2]),
+        .O(\cnt[4]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'h4F)) 
+    \cnt[5]_i_1 
+       (.I0(\cnt[5]_i_3_n_0 ),
+        .I1(togP),
+        .I2(MDIO_ENABLE),
+        .O(\cnt[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000570002)) 
+    \cnt[5]_i_2 
+       (.I0(state[2]),
+        .I1(\cnt[5]_i_4_n_0 ),
+        .I2(state[1]),
+        .I3(state[3]),
+        .I4(\cnt[5]_i_5_n_0 ),
+        .I5(\cnt[5]_i_6_n_0 ),
+        .O(\cnt[5]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFF008000000)) 
+    \cnt[5]_i_3 
+       (.I0(\data[15]_i_4_n_0 ),
+        .I1(\cnt[5]_i_7_n_0 ),
+        .I2(state[0]),
+        .I3(state[1]),
+        .I4(state[2]),
+        .I5(state[3]),
+        .O(\cnt[5]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFE0)) 
+    \cnt[5]_i_4 
+       (.I0(\cnt_reg_n_0_[1] ),
+        .I1(\cnt_reg_n_0_[0] ),
+        .I2(\cnt_reg_n_0_[2] ),
+        .I3(\cnt_reg_n_0_[3] ),
+        .I4(\cnt_reg_n_0_[4] ),
+        .I5(\cnt_reg_n_0_[5] ),
+        .O(\cnt[5]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'h40404F40)) 
+    \cnt[5]_i_5 
+       (.I0(\cnt_reg_n_0_[1] ),
+        .I1(\cnt[5]_i_8_n_0 ),
+        .I2(state[1]),
+        .I3(state[0]),
+        .I4(\cnt_reg_n_0_[5] ),
+        .O(\cnt[5]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT4 #(
+    .INIT(16'h4BFF)) 
+    \cnt[5]_i_6 
+       (.I0(\cnt[5]_i_9_n_0 ),
+        .I1(\cnt_reg_n_0_[4] ),
+        .I2(\cnt_reg_n_0_[5] ),
+        .I3(MDIO_ENABLE),
+        .O(\cnt[5]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFB)) 
+    \cnt[5]_i_7 
+       (.I0(\cnt_reg_n_0_[1] ),
+        .I1(\cnt_reg_n_0_[0] ),
+        .I2(\cnt_reg_n_0_[2] ),
+        .I3(\cnt_reg_n_0_[3] ),
+        .I4(\cnt_reg_n_0_[4] ),
+        .I5(\cnt_reg_n_0_[5] ),
+        .O(\cnt[5]_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \cnt[5]_i_8 
+       (.I0(\cnt_reg_n_0_[2] ),
+        .I1(\cnt_reg_n_0_[3] ),
+        .I2(\cnt_reg_n_0_[4] ),
+        .I3(\cnt_reg_n_0_[5] ),
+        .O(\cnt[5]_i_8_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \cnt[5]_i_9 
+       (.I0(\cnt_reg_n_0_[2] ),
+        .I1(\cnt_reg_n_0_[1] ),
+        .I2(\cnt_reg_n_0_[0] ),
+        .I3(\cnt_reg_n_0_[3] ),
+        .O(\cnt[5]_i_9_n_0 ));
+  FDCE \cnt_reg[0] 
+       (.C(PCLK),
+        .CE(\cnt[5]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\cnt[0]_i_1_n_0 ),
+        .Q(\cnt_reg_n_0_[0] ));
+  FDCE \cnt_reg[1] 
+       (.C(PCLK),
+        .CE(\cnt[5]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\cnt[1]_i_1_n_0 ),
+        .Q(\cnt_reg_n_0_[1] ));
+  MUXF7 \cnt_reg[1]_i_2 
+       (.I0(\cnt[1]_i_4_n_0 ),
+        .I1(\cnt[1]_i_5_n_0 ),
+        .O(\cnt_reg[1]_i_2_n_0 ),
+        .S(state[2]));
+  FDCE \cnt_reg[2] 
+       (.C(PCLK),
+        .CE(\cnt[5]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\cnt[2]_i_1_n_0 ),
+        .Q(\cnt_reg_n_0_[2] ));
+  FDCE \cnt_reg[3] 
+       (.C(PCLK),
+        .CE(\cnt[5]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\cnt[3]_i_1_n_0 ),
+        .Q(\cnt_reg_n_0_[3] ));
+  FDCE \cnt_reg[4] 
+       (.C(PCLK),
+        .CE(\cnt[5]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\cnt[4]_i_1_n_0 ),
+        .Q(\cnt_reg_n_0_[4] ));
+  FDCE \cnt_reg[5] 
+       (.C(PCLK),
+        .CE(\cnt[5]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\cnt[5]_i_2_n_0 ),
+        .Q(\cnt_reg_n_0_[5] ));
+  FDCE \count_reg[0] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [0]),
+        .Q(\count_reg[15]_0 [0]));
+  FDCE \count_reg[10] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [10]),
+        .Q(\count_reg[15]_0 [10]));
+  FDCE \count_reg[11] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [11]),
+        .Q(\count_reg[15]_0 [11]));
+  FDCE \count_reg[12] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [12]),
+        .Q(\count_reg[15]_0 [12]));
+  CARRY4 \count_reg[12]_i_2 
+       (.CI(\count_reg[8]_i_2_n_0 ),
+        .CO({\count_reg[12]_i_2_n_0 ,\count_reg[12]_i_2_n_1 ,\count_reg[12]_i_2_n_2 ,\count_reg[12]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(\count_reg[12]_0 ),
+        .S(\count_reg[15]_0 [12:9]));
+  FDCE \count_reg[13] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [13]),
+        .Q(\count_reg[15]_0 [13]));
+  FDCE \count_reg[14] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [14]),
+        .Q(\count_reg[15]_0 [14]));
+  FDCE \count_reg[15] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [15]),
+        .Q(\count_reg[15]_0 [15]));
+  CARRY4 \count_reg[15]_i_2 
+       (.CI(\count_reg[12]_i_2_n_0 ),
+        .CO({\NLW_count_reg[15]_i_2_CO_UNCONNECTED [3:2],\count_reg[15]_i_2_n_2 ,\count_reg[15]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_count_reg[15]_i_2_O_UNCONNECTED [3],\count_reg[15]_1 }),
+        .S({1'b0,\count_reg[15]_0 [15:13]}));
+  FDCE \count_reg[1] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [1]),
+        .Q(\count_reg[15]_0 [1]));
+  FDCE \count_reg[2] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [2]),
+        .Q(\count_reg[15]_0 [2]));
+  FDCE \count_reg[3] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [3]),
+        .Q(\count_reg[15]_0 [3]));
+  FDCE \count_reg[4] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [4]),
+        .Q(\count_reg[15]_0 [4]));
+  CARRY4 \count_reg[4]_i_2 
+       (.CI(1'b0),
+        .CO({\count_reg[4]_i_2_n_0 ,\count_reg[4]_i_2_n_1 ,\count_reg[4]_i_2_n_2 ,\count_reg[4]_i_2_n_3 }),
+        .CYINIT(\count_reg[15]_0 [0]),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(O),
+        .S(\count_reg[15]_0 [4:1]));
+  FDCE \count_reg[5] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [5]),
+        .Q(\count_reg[15]_0 [5]));
+  FDCE \count_reg[6] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [6]),
+        .Q(\count_reg[15]_0 [6]));
+  FDCE \count_reg[7] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [7]),
+        .Q(\count_reg[15]_0 [7]));
+  FDCE \count_reg[8] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [8]),
+        .Q(\count_reg[15]_0 [8]));
+  CARRY4 \count_reg[8]_i_2 
+       (.CI(\count_reg[4]_i_2_n_0 ),
+        .CO({\count_reg[8]_i_2_n_0 ,\count_reg[8]_i_2_n_1 ,\count_reg[8]_i_2_n_2 ,\count_reg[8]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(\count_reg[8]_0 ),
+        .S(\count_reg[15]_0 [8:5]));
+  FDCE \count_reg[9] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\count_reg[15]_3 [9]),
+        .Q(\count_reg[15]_0 [9]));
+  LUT6 #(
+    .INIT(64'hDDDDDDDDDDDFDDDD)) 
+    \data[15]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\data[15]_i_3_n_0 ),
+        .I2(\data[15]_i_4_n_0 ),
+        .I3(\data[15]_i_5_n_0 ),
+        .I4(MDIO_WR),
+        .I5(state[0]),
+        .O(\data[15]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h4000001140000000)) 
+    \data[15]_i_3 
+       (.I0(\raddr[4]_i_5_n_0 ),
+        .I1(state[2]),
+        .I2(\cnt[1]_i_3_n_0 ),
+        .I3(state[0]),
+        .I4(state[1]),
+        .I5(MDIO_GO),
+        .O(\data[15]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFEFFFF)) 
+    \data[15]_i_4 
+       (.I0(\cnt_reg_n_0_[5] ),
+        .I1(\cnt_reg_n_0_[4] ),
+        .I2(\cnt_reg_n_0_[3] ),
+        .I3(\cnt_reg_n_0_[2] ),
+        .I4(\cnt_reg_n_0_[1] ),
+        .I5(\cnt_reg_n_0_[0] ),
+        .O(\data[15]_i_4_n_0 ));
+  LUT4 #(
+    .INIT(16'hFF7F)) 
+    \data[15]_i_5 
+       (.I0(state[1]),
+        .I1(state[2]),
+        .I2(togP),
+        .I3(state[3]),
+        .O(\data[15]_i_5_n_0 ));
+  FDCE \data_reg[0] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [0]),
+        .Q(\data_reg[14]_0 [0]));
+  FDCE \data_reg[10] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [10]),
+        .Q(\data_reg[14]_0 [10]));
+  FDCE \data_reg[11] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [11]),
+        .Q(\data_reg[14]_0 [11]));
+  FDCE \data_reg[12] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [12]),
+        .Q(\data_reg[14]_0 [12]));
+  FDCE \data_reg[13] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [13]),
+        .Q(\data_reg[14]_0 [13]));
+  FDCE \data_reg[14] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [14]),
+        .Q(\data_reg[14]_0 [14]));
+  FDCE \data_reg[15] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [15]),
+        .Q(\data_reg_n_0_[15] ));
+  FDCE \data_reg[1] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [1]),
+        .Q(\data_reg[14]_0 [1]));
+  FDCE \data_reg[2] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [2]),
+        .Q(\data_reg[14]_0 [2]));
+  FDCE \data_reg[3] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [3]),
+        .Q(\data_reg[14]_0 [3]));
+  FDCE \data_reg[4] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [4]),
+        .Q(\data_reg[14]_0 [4]));
+  FDCE \data_reg[5] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [5]),
+        .Q(\data_reg[14]_0 [5]));
+  FDCE \data_reg[6] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [6]),
+        .Q(\data_reg[14]_0 [6]));
+  FDCE \data_reg[7] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [7]),
+        .Q(\data_reg[14]_0 [7]));
+  FDCE \data_reg[8] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [8]),
+        .Q(\data_reg[14]_0 [8]));
+  FDCE \data_reg[9] 
+       (.C(PCLK),
+        .CE(\data[15]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\data_reg[15]_0 [9]),
+        .Q(\data_reg[14]_0 [9]));
+  LUT6 #(
+    .INIT(64'h54FFFFFF5400FFFF)) 
+    mdio_i_1
+       (.I0(mdio_i_2_n_0),
+        .I1(mdio_i_3_n_0),
+        .I2(mdio_i_4_n_0),
+        .I3(mdio_i_5_n_0),
+        .I4(MDIO_ENABLE),
+        .I5(mdio_reg_n_0),
+        .O(mdio_i_1_n_0));
+  LUT6 #(
+    .INIT(64'h00000000AAABAFFB)) 
+    mdio_i_2
+       (.I0(state[1]),
+        .I1(p_1_in),
+        .I2(state[0]),
+        .I3(\cnt[5]_i_4_n_0 ),
+        .I4(\raddr_reg_n_0_[4] ),
+        .I5(mdio_i_6_n_0),
+        .O(mdio_i_2_n_0));
+  LUT5 #(
+    .INIT(32'hEEEFEEFF)) 
+    mdio_i_3
+       (.I0(state[2]),
+        .I1(state[3]),
+        .I2(state[0]),
+        .I3(state[1]),
+        .I4(\cnt_reg_n_0_[5] ),
+        .O(mdio_i_3_n_0));
+  LUT6 #(
+    .INIT(64'hA02288AAA022A022)) 
+    mdio_i_4
+       (.I0(state[1]),
+        .I1(MDIO_WR),
+        .I2(p_1_in),
+        .I3(state[0]),
+        .I4(\cnt_reg_n_0_[1] ),
+        .I5(\cnt[5]_i_8_n_0 ),
+        .O(mdio_i_4_n_0));
+  LUT6 #(
+    .INIT(64'h0808080808080888)) 
+    mdio_i_5
+       (.I0(mdio_i_7_n_0),
+        .I1(togP),
+        .I2(state[3]),
+        .I3(state[0]),
+        .I4(\cnt[1]_i_3_n_0 ),
+        .I5(\state[0]_i_6_n_0 ),
+        .O(mdio_i_5_n_0));
+  LUT6 #(
+    .INIT(64'hFFAEAAAAEEAEAAAA)) 
+    mdio_i_6
+       (.I0(\cnt[0]_i_9_n_0 ),
+        .I1(state[0]),
+        .I2(\cnt[1]_i_3_n_0 ),
+        .I3(\data_reg_n_0_[15] ),
+        .I4(state[1]),
+        .I5(\cnt[5]_i_7_n_0 ),
+        .O(mdio_i_6_n_0));
+  LUT6 #(
+    .INIT(64'hFFFF2FFFFFFFFFFF)) 
+    mdio_i_7
+       (.I0(MDIO_WR),
+        .I1(\data[15]_i_4_n_0 ),
+        .I2(state[2]),
+        .I3(\cnt[5]_i_7_n_0 ),
+        .I4(state[0]),
+        .I5(state[1]),
+        .O(mdio_i_7_n_0));
+  LUT6 #(
+    .INIT(64'hAAAAEFAAAAAA20AA)) 
+    mdio_oe_i_1
+       (.I0(mdio_oe0_out),
+        .I1(mdio_oe_i_3_n_0),
+        .I2(togP),
+        .I3(MDIO_ENABLE),
+        .I4(mdio_oe_i_4_n_0),
+        .I5(mdio_oe_reg_n_0),
+        .O(mdio_oe_i_1_n_0));
+  LUT6 #(
+    .INIT(64'hD0D0D00000000000)) 
+    mdio_oe_i_2
+       (.I0(state[2]),
+        .I1(MDIO_WR),
+        .I2(MDIO_ENABLE),
+        .I3(MDIO_GO),
+        .I4(state[0]),
+        .I5(mdio_oe_i_5_n_0),
+        .O(mdio_oe0_out));
+  LUT6 #(
+    .INIT(64'hFFFFBFBFFFFFAAA0)) 
+    mdio_oe_i_3
+       (.I0(state[3]),
+        .I1(\cnt[5]_i_4_n_0 ),
+        .I2(state[0]),
+        .I3(\cnt[1]_i_3_n_0 ),
+        .I4(state[1]),
+        .I5(state[2]),
+        .O(mdio_oe_i_3_n_0));
+  LUT6 #(
+    .INIT(64'h0400000000000000)) 
+    mdio_oe_i_4
+       (.I0(\cnt[1]_i_3_n_0 ),
+        .I1(state[0]),
+        .I2(state[3]),
+        .I3(togP),
+        .I4(state[2]),
+        .I5(state[1]),
+        .O(mdio_oe_i_4_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
+    mdio_oe_i_5
+       (.I0(state[3]),
+        .I1(state[1]),
+        .O(mdio_oe_i_5_n_0));
+  FDCE mdio_oe_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(mdio_oe_i_1_n_0),
+        .Q(mdio_oe_reg_n_0));
+  FDPE mdio_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .D(mdio_i_1_n_0),
+        .PRE(\count_reg[15]_2 ),
+        .Q(mdio_reg_n_0));
+  LUT5 #(
+    .INIT(32'hFE020000)) 
+    \paddr[1]_i_1 
+       (.I0(\paddr_reg[4]_0 [0]),
+        .I1(state[1]),
+        .I2(state[2]),
+        .I3(\paddr_reg_n_0_[0] ),
+        .I4(MDIO_ENABLE),
+        .O(\paddr[1]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFE020000)) 
+    \paddr[2]_i_1 
+       (.I0(\paddr_reg[4]_0 [1]),
+        .I1(state[1]),
+        .I2(state[2]),
+        .I3(\paddr_reg_n_0_[1] ),
+        .I4(MDIO_ENABLE),
+        .O(\paddr[2]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFE020000)) 
+    \paddr[3]_i_1 
+       (.I0(\paddr_reg[4]_0 [2]),
+        .I1(state[1]),
+        .I2(state[2]),
+        .I3(\paddr_reg_n_0_[2] ),
+        .I4(MDIO_ENABLE),
+        .O(\paddr[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h10FF)) 
+    \paddr[4]_i_1 
+       (.I0(\paddr[4]_i_3_n_0 ),
+        .I1(state[3]),
+        .I2(togP),
+        .I3(MDIO_ENABLE),
+        .O(\paddr[4]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFE020000)) 
+    \paddr[4]_i_2 
+       (.I0(\paddr_reg[4]_0 [3]),
+        .I1(state[1]),
+        .I2(state[2]),
+        .I3(\paddr_reg_n_0_[3] ),
+        .I4(MDIO_ENABLE),
+        .O(\paddr[4]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hEEFFFFC0EEFFFFF3)) 
+    \paddr[4]_i_3 
+       (.I0(\state[0]_i_5_n_0 ),
+        .I1(state[2]),
+        .I2(\cnt[5]_i_4_n_0 ),
+        .I3(state[1]),
+        .I4(state[0]),
+        .I5(MDIO_GO),
+        .O(\paddr[4]_i_3_n_0 ));
+  FDCE \paddr_reg[0] 
+       (.C(PCLK),
+        .CE(\paddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\paddr_reg[0]_0 ),
+        .Q(\paddr_reg_n_0_[0] ));
+  FDCE \paddr_reg[1] 
+       (.C(PCLK),
+        .CE(\paddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\paddr[1]_i_1_n_0 ),
+        .Q(\paddr_reg_n_0_[1] ));
+  FDCE \paddr_reg[2] 
+       (.C(PCLK),
+        .CE(\paddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\paddr[2]_i_1_n_0 ),
+        .Q(\paddr_reg_n_0_[2] ));
+  FDCE \paddr_reg[3] 
+       (.C(PCLK),
+        .CE(\paddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\paddr[3]_i_1_n_0 ),
+        .Q(\paddr_reg_n_0_[3] ));
+  FDCE \paddr_reg[4] 
+       (.C(PCLK),
+        .CE(\paddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\paddr[4]_i_2_n_0 ),
+        .Q(p_1_in));
+  LUT6 #(
+    .INIT(64'h00005755FFFFFFFF)) 
+    \raddr[4]_i_1 
+       (.I0(\raddr[4]_i_3_n_0 ),
+        .I1(state[1]),
+        .I2(\raddr[4]_i_4_n_0 ),
+        .I3(state[2]),
+        .I4(\raddr[4]_i_5_n_0 ),
+        .I5(MDIO_ENABLE),
+        .O(\raddr[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFB)) 
+    \raddr[4]_i_3 
+       (.I0(state[2]),
+        .I1(MDIO_GO),
+        .I2(state[1]),
+        .I3(state[0]),
+        .O(\raddr[4]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAA6AAA6AAA6A6A6)) 
+    \raddr[4]_i_4 
+       (.I0(state[0]),
+        .I1(\cnt[1]_i_3_n_0 ),
+        .I2(\cnt_reg_n_0_[3] ),
+        .I3(\cnt_reg_n_0_[2] ),
+        .I4(\cnt_reg_n_0_[0] ),
+        .I5(\cnt_reg_n_0_[1] ),
+        .O(\raddr[4]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'hB)) 
+    \raddr[4]_i_5 
+       (.I0(state[3]),
+        .I1(togP),
+        .O(\raddr[4]_i_5_n_0 ));
+  FDCE \raddr_reg[0] 
+       (.C(PCLK),
+        .CE(\raddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\raddr_reg[4]_0 [0]),
+        .Q(\raddr_reg[3]_0 [0]));
+  FDCE \raddr_reg[1] 
+       (.C(PCLK),
+        .CE(\raddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\raddr_reg[4]_0 [1]),
+        .Q(\raddr_reg[3]_0 [1]));
+  FDCE \raddr_reg[2] 
+       (.C(PCLK),
+        .CE(\raddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\raddr_reg[4]_0 [2]),
+        .Q(\raddr_reg[3]_0 [2]));
+  FDCE \raddr_reg[3] 
+       (.C(PCLK),
+        .CE(\raddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\raddr_reg[4]_0 [3]),
+        .Q(\raddr_reg[3]_0 [3]));
+  FDCE \raddr_reg[4] 
+       (.C(PCLK),
+        .CE(\raddr[4]_i_1_n_0 ),
+        .CLR(\count_reg[15]_2 ),
+        .D(\raddr_reg[4]_0 [4]),
+        .Q(\raddr_reg_n_0_[4] ));
+  LUT6 #(
+    .INIT(64'hFE00FE00FE000000)) 
+    \state[0]_i_1 
+       (.I0(\state[0]_i_2_n_0 ),
+        .I1(\state[0]_i_3_n_0 ),
+        .I2(\state[0]_i_4_n_0 ),
+        .I3(MDIO_ENABLE),
+        .I4(togP),
+        .I5(state[0]),
+        .O(\state[0]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h4015511540045104)) 
+    \state[0]_i_2 
+       (.I0(\cnt[0]_i_6_n_0 ),
+        .I1(state[1]),
+        .I2(\state[0]_i_5_n_0 ),
+        .I3(state[0]),
+        .I4(\cnt_reg_n_0_[5] ),
+        .I5(MDIO_GO),
+        .O(\state[0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000AB00FFFF)) 
+    \state[0]_i_3 
+       (.I0(state[0]),
+        .I1(\state[0]_i_6_n_0 ),
+        .I2(\cnt[1]_i_3_n_0 ),
+        .I3(state[3]),
+        .I4(togP),
+        .I5(\state[3]_i_3_n_0 ),
+        .O(\state[0]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h5014501455145014)) 
+    \state[0]_i_4 
+       (.I0(\cnt[0]_i_9_n_0 ),
+        .I1(\cnt[5]_i_4_n_0 ),
+        .I2(state[0]),
+        .I3(state[1]),
+        .I4(MDIO_WR),
+        .I5(\data[15]_i_4_n_0 ),
+        .O(\state[0]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT5 #(
+    .INIT(32'h00000001)) 
+    \state[0]_i_5 
+       (.I0(\cnt_reg_n_0_[2] ),
+        .I1(\cnt_reg_n_0_[3] ),
+        .I2(\cnt_reg_n_0_[4] ),
+        .I3(\cnt_reg_n_0_[5] ),
+        .I4(\cnt_reg_n_0_[1] ),
+        .O(\state[0]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \state[0]_i_6 
+       (.I0(state[2]),
+        .I1(state[1]),
+        .O(\state[0]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAAA8088A2AA8088)) 
+    \state[1]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(togP),
+        .I2(\state[1]_i_2_n_0 ),
+        .I3(\state[1]_i_3_n_0 ),
+        .I4(state[1]),
+        .I5(state[3]),
+        .O(\state[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF04040400)) 
+    \state[1]_i_2 
+       (.I0(\cnt[0]_i_9_n_0 ),
+        .I1(state[1]),
+        .I2(state[0]),
+        .I3(MDIO_WR),
+        .I4(\data[15]_i_4_n_0 ),
+        .I5(\state[1]_i_4_n_0 ),
+        .O(\state[1]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hDDFFDFFFFFFFDFFF)) 
+    \state[1]_i_3 
+       (.I0(state[2]),
+        .I1(state[3]),
+        .I2(\cnt[5]_i_4_n_0 ),
+        .I3(state[0]),
+        .I4(state[1]),
+        .I5(\cnt[1]_i_3_n_0 ),
+        .O(\state[1]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h000000000000ACF0)) 
+    \state[1]_i_4 
+       (.I0(\state[0]_i_5_n_0 ),
+        .I1(\cnt_reg_n_0_[5] ),
+        .I2(state[1]),
+        .I3(state[0]),
+        .I4(state[3]),
+        .I5(state[2]),
+        .O(\state[1]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000FF020000)) 
+    \state[2]_i_1 
+       (.I0(togP),
+        .I1(state[3]),
+        .I2(\state[2]_i_2_n_0 ),
+        .I3(state[2]),
+        .I4(MDIO_ENABLE),
+        .I5(\state[3]_i_2_n_0 ),
+        .O(\state[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0004FFFFFFFFFFFF)) 
+    \state[2]_i_2 
+       (.I0(\cnt_reg_n_0_[1] ),
+        .I1(\cnt[1]_i_3_n_0 ),
+        .I2(\cnt_reg_n_0_[3] ),
+        .I3(\cnt_reg_n_0_[2] ),
+        .I4(state[1]),
+        .I5(state[0]),
+        .O(\state[2]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h8A88)) 
+    \state[3]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\state[3]_i_2_n_0 ),
+        .I2(\state[3]_i_3_n_0 ),
+        .I3(state[3]),
+        .O(\state[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000EE00EE0F)) 
+    \state[3]_i_2 
+       (.I0(\cnt_reg_n_0_[5] ),
+        .I1(\cnt_reg_n_0_[4] ),
+        .I2(\data[15]_i_4_n_0 ),
+        .I3(state[0]),
+        .I4(MDIO_WR),
+        .I5(\data[15]_i_5_n_0 ),
+        .O(\state[3]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h00000400)) 
+    \state[3]_i_3 
+       (.I0(state[1]),
+        .I1(state[0]),
+        .I2(MDIO_GO),
+        .I3(togP),
+        .I4(state[2]),
+        .O(\state[3]_i_3_n_0 ));
+  (* KEEP = "yes" *) 
+  FDCE \state_reg[0] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\state[0]_i_1_n_0 ),
+        .Q(state[0]));
+  (* KEEP = "yes" *) 
+  FDCE \state_reg[1] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\state[1]_i_1_n_0 ),
+        .Q(state[1]));
+  (* KEEP = "yes" *) 
+  FDCE \state_reg[2] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\state[2]_i_1_n_0 ),
+        .Q(state[2]));
+  (* KEEP = "yes" *) 
+  FDCE \state_reg[3] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(\state[3]_i_1_n_0 ),
+        .Q(state[3]));
+  FDCE togN_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(togN),
+        .Q(togN_reg_n_0));
+  CARRY4 togPN1_carry
+       (.CI(1'b0),
+        .CO({togPN1_carry_n_0,togPN1_carry_n_1,togPN1_carry_n_2,togPN1_carry_n_3}),
+        .CYINIT(1'b0),
+        .DI(DI),
+        .O(NLW_togPN1_carry_O_UNCONNECTED[3:0]),
+        .S({togPN1_carry_i_5_n_0,togPN1_carry_i_6_n_0,togPN1_carry_i_7_n_0,togPN1_carry_i_8_n_0}));
+  CARRY4 togPN1_carry__0
+       (.CI(togPN1_carry_n_0),
+        .CO({CO,togPN1_carry__0_n_1,togPN1_carry__0_n_2,togPN1_carry__0_n_3}),
+        .CYINIT(1'b0),
+        .DI(togPN_reg_0),
+        .O(NLW_togPN1_carry__0_O_UNCONNECTED[3:0]),
+        .S({togPN1_carry_i_5__0_n_0,togPN1_carry_i_6__0_n_0,togPN1_carry_i_7__0_n_0,togPN1_carry_i_8__0_n_0}));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    togPN1_carry_i_5
+       (.I0(\count_reg[15]_0 [7]),
+        .I1(togPN1_carry__0_0[7]),
+        .I2(\count_reg[15]_0 [6]),
+        .I3(togPN1_carry__0_0[6]),
+        .O(togPN1_carry_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    togPN1_carry_i_5__0
+       (.I0(\count_reg[15]_0 [15]),
+        .I1(togPN1_carry__0_0[15]),
+        .I2(\count_reg[15]_0 [14]),
+        .I3(togPN1_carry__0_0[14]),
+        .O(togPN1_carry_i_5__0_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    togPN1_carry_i_6
+       (.I0(\count_reg[15]_0 [5]),
+        .I1(togPN1_carry__0_0[5]),
+        .I2(\count_reg[15]_0 [4]),
+        .I3(togPN1_carry__0_0[4]),
+        .O(togPN1_carry_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    togPN1_carry_i_6__0
+       (.I0(\count_reg[15]_0 [13]),
+        .I1(togPN1_carry__0_0[13]),
+        .I2(\count_reg[15]_0 [12]),
+        .I3(togPN1_carry__0_0[12]),
+        .O(togPN1_carry_i_6__0_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    togPN1_carry_i_7
+       (.I0(\count_reg[15]_0 [3]),
+        .I1(togPN1_carry__0_0[3]),
+        .I2(\count_reg[15]_0 [2]),
+        .I3(togPN1_carry__0_0[2]),
+        .O(togPN1_carry_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    togPN1_carry_i_7__0
+       (.I0(\count_reg[15]_0 [11]),
+        .I1(togPN1_carry__0_0[11]),
+        .I2(\count_reg[15]_0 [10]),
+        .I3(togPN1_carry__0_0[10]),
+        .O(togPN1_carry_i_7__0_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    togPN1_carry_i_8
+       (.I0(\count_reg[15]_0 [1]),
+        .I1(togPN1_carry__0_0[1]),
+        .I2(\count_reg[15]_0 [0]),
+        .I3(togPN1_carry__0_0[0]),
+        .O(togPN1_carry_i_8_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    togPN1_carry_i_8__0
+       (.I0(\count_reg[15]_0 [9]),
+        .I1(togPN1_carry__0_0[9]),
+        .I2(\count_reg[15]_0 [8]),
+        .I3(togPN1_carry__0_0[8]),
+        .O(togPN1_carry_i_8__0_n_0));
+  FDCE togPN_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(togPN_reg_1),
+        .Q(togPN));
+  FDCE togP_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\count_reg[15]_2 ),
+        .D(togP11_out),
+        .Q(togP));
+endmodule
+
+module mdio_csr
+   (MDIO_ENABLE,
+    MDIO_WR,
+    MDIO_GO_WR,
+    MDIO_GO_RD,
+    MDIO_GO,
+    E,
+    PENABLE_0,
+    PADDR_0_sp_1,
+    PSEL_0,
+    PSEL_1,
+    Q,
+    PADDR_2_sp_1,
+    \csr_mdio_rd_data_reg[0]_0 ,
+    PADDR_3_sp_1,
+    \csr_mdio_ctl_clk_div_reg[15]_0 ,
+    PADDR_4_sp_1,
+    DI,
+    \csr_mdio_ctl_clk_div_reg[15]_1 ,
+    csr_mdio_ctl_en_reg_0,
+    PRDATA,
+    IRQ,
+    \MDIO_PHYADR_reg[0]_0 ,
+    \MDIO_PHYADR_reg[4]_0 ,
+    \MDIO_WDATA_reg[15]_0 ,
+    \MDIO_REGADR_reg[4]_0 ,
+    csr_mdio_ctl_en_reg_1,
+    togP11_out,
+    togN,
+    \PADDR[4]_0 ,
+    csr_mdio_ctl_en_reg_2,
+    csr_mdio_ctl_en_reg_3,
+    csr_mdio_ctl_rst_reg_0,
+    PCLK,
+    MDIO_GO_WR_reg_0,
+    MDIO_GO_RD_reg_0,
+    PADDR,
+    PSEL,
+    PWRITE,
+    PENABLE,
+    PWDATA,
+    MDIO_DONE,
+    togPN1_carry__0,
+    togPN,
+    out,
+    \count_reg[12] ,
+    CO,
+    \csr_mdio_rd_data_reg[15]_0 ,
+    O,
+    \count_reg[15] ,
+    \count_reg[8] ,
+    MDIO_I,
+    PRESETn,
+    MDIO_ACK,
+    \raddr_reg[4] ,
+    \data_reg[15] ,
+    D);
+  output MDIO_ENABLE;
+  output MDIO_WR;
+  output MDIO_GO_WR;
+  output MDIO_GO_RD;
+  output MDIO_GO;
+  output [0:0]E;
+  output [0:0]PENABLE_0;
+  output PADDR_0_sp_1;
+  output PSEL_0;
+  output PSEL_1;
+  output [0:0]Q;
+  output PADDR_2_sp_1;
+  output [0:0]\csr_mdio_rd_data_reg[0]_0 ;
+  output PADDR_3_sp_1;
+  output [15:0]\csr_mdio_ctl_clk_div_reg[15]_0 ;
+  output PADDR_4_sp_1;
+  output [3:0]DI;
+  output [3:0]\csr_mdio_ctl_clk_div_reg[15]_1 ;
+  output csr_mdio_ctl_en_reg_0;
+  output [31:0]PRDATA;
+  output IRQ;
+  output [0:0]\MDIO_PHYADR_reg[0]_0 ;
+  output [3:0]\MDIO_PHYADR_reg[4]_0 ;
+  output [15:0]\MDIO_WDATA_reg[15]_0 ;
+  output [4:0]\MDIO_REGADR_reg[4]_0 ;
+  output [15:0]csr_mdio_ctl_en_reg_1;
+  output togP11_out;
+  output togN;
+  output \PADDR[4]_0 ;
+  output [15:0]csr_mdio_ctl_en_reg_2;
+  output csr_mdio_ctl_en_reg_3;
+  output csr_mdio_ctl_rst_reg_0;
+  input PCLK;
+  input MDIO_GO_WR_reg_0;
+  input MDIO_GO_RD_reg_0;
+  input [7:0]PADDR;
+  input PSEL;
+  input PWRITE;
+  input PENABLE;
+  input [27:0]PWDATA;
+  input MDIO_DONE;
+  input [15:0]togPN1_carry__0;
+  input togPN;
+  input [1:0]out;
+  input [3:0]\count_reg[12] ;
+  input [0:0]CO;
+  input [15:0]\csr_mdio_rd_data_reg[15]_0 ;
+  input [3:0]O;
+  input [2:0]\count_reg[15] ;
+  input [3:0]\count_reg[8] ;
+  input MDIO_I;
+  input PRESETn;
+  input MDIO_ACK;
+  input [3:0]\raddr_reg[4] ;
+  input [14:0]\data_reg[15] ;
+  input [0:0]D;
+
+  wire [0:0]CO;
+  wire [0:0]D;
+  wire [3:0]DI;
+  wire [0:0]E;
+  wire \FSM_sequential_state_mdio[0]_i_1_n_0 ;
+  wire \FSM_sequential_state_mdio[1]_i_1_n_0 ;
+  wire IRQ;
+  wire MDIO_ACK;
+  wire MDIO_DONE;
+  wire MDIO_ENABLE;
+  wire MDIO_GO;
+  wire MDIO_GO_RD;
+  wire MDIO_GO_RD_reg_0;
+  wire MDIO_GO_WR;
+  wire MDIO_GO_WR_reg_0;
+  wire MDIO_GO_i_1_n_0;
+  wire MDIO_I;
+  wire [0:0]MDIO_PHYADR;
+  wire \MDIO_PHYADR[0]_i_1_n_0 ;
+  wire \MDIO_PHYADR[1]_i_1_n_0 ;
+  wire \MDIO_PHYADR[2]_i_1_n_0 ;
+  wire \MDIO_PHYADR[3]_i_1_n_0 ;
+  wire \MDIO_PHYADR[4]_i_1_n_0 ;
+  wire \MDIO_PHYADR[4]_i_2_n_0 ;
+  wire [0:0]\MDIO_PHYADR_reg[0]_0 ;
+  wire [3:0]\MDIO_PHYADR_reg[4]_0 ;
+  wire [4:0]MDIO_REGADR;
+  wire \MDIO_REGADR[0]_i_1_n_0 ;
+  wire \MDIO_REGADR[1]_i_1_n_0 ;
+  wire \MDIO_REGADR[2]_i_1_n_0 ;
+  wire \MDIO_REGADR[3]_i_1_n_0 ;
+  wire \MDIO_REGADR[4]_i_1_n_0 ;
+  wire [4:0]\MDIO_REGADR_reg[4]_0 ;
+  wire MDIO_RST;
+  wire [15:0]MDIO_WDATA;
+  wire \MDIO_WDATA[0]_i_1_n_0 ;
+  wire \MDIO_WDATA[10]_i_1_n_0 ;
+  wire \MDIO_WDATA[11]_i_1_n_0 ;
+  wire \MDIO_WDATA[12]_i_1_n_0 ;
+  wire \MDIO_WDATA[13]_i_1_n_0 ;
+  wire \MDIO_WDATA[14]_i_1_n_0 ;
+  wire \MDIO_WDATA[15]_i_1_n_0 ;
+  wire \MDIO_WDATA[15]_i_2_n_0 ;
+  wire \MDIO_WDATA[1]_i_1_n_0 ;
+  wire \MDIO_WDATA[2]_i_1_n_0 ;
+  wire \MDIO_WDATA[3]_i_1_n_0 ;
+  wire \MDIO_WDATA[4]_i_1_n_0 ;
+  wire \MDIO_WDATA[5]_i_1_n_0 ;
+  wire \MDIO_WDATA[6]_i_1_n_0 ;
+  wire \MDIO_WDATA[7]_i_1_n_0 ;
+  wire \MDIO_WDATA[8]_i_1_n_0 ;
+  wire \MDIO_WDATA[9]_i_1_n_0 ;
+  wire [15:0]\MDIO_WDATA_reg[15]_0 ;
+  wire MDIO_WR;
+  wire MDIO_WR_i_1_n_0;
+  wire [3:0]O;
+  wire [7:0]PADDR;
+  wire \PADDR[4]_0 ;
+  wire PADDR_0_sn_1;
+  wire PADDR_2_sn_1;
+  wire PADDR_3_sn_1;
+  wire PADDR_4_sn_1;
+  wire PCLK;
+  wire PENABLE;
+  wire [0:0]PENABLE_0;
+  wire [31:0]PRDATA;
+  wire PRESETn;
+  wire PSEL;
+  wire PSEL_0;
+  wire PSEL_1;
+  wire [27:0]PWDATA;
+  wire PWRITE;
+  wire [0:0]Q;
+  wire [31:0]T_RDATA;
+  wire \T_RDATA[10]_i_1_n_0 ;
+  wire \T_RDATA[10]_i_2_n_0 ;
+  wire \T_RDATA[11]_i_1_n_0 ;
+  wire \T_RDATA[11]_i_2_n_0 ;
+  wire \T_RDATA[12]_i_1_n_0 ;
+  wire \T_RDATA[12]_i_2_n_0 ;
+  wire \T_RDATA[13]_i_1_n_0 ;
+  wire \T_RDATA[13]_i_2_n_0 ;
+  wire \T_RDATA[13]_i_3_n_0 ;
+  wire \T_RDATA[13]_i_4_n_0 ;
+  wire \T_RDATA[14]_i_1_n_0 ;
+  wire \T_RDATA[14]_i_2_n_0 ;
+  wire \T_RDATA[14]_i_3_n_0 ;
+  wire \T_RDATA[15]_i_1_n_0 ;
+  wire \T_RDATA[15]_i_2_n_0 ;
+  wire \T_RDATA[16]_i_1_n_0 ;
+  wire \T_RDATA[16]_i_2_n_0 ;
+  wire \T_RDATA[16]_i_3_n_0 ;
+  wire \T_RDATA[16]_i_4_n_0 ;
+  wire \T_RDATA[17]_i_1_n_0 ;
+  wire \T_RDATA[17]_i_2_n_0 ;
+  wire \T_RDATA[17]_i_3_n_0 ;
+  wire \T_RDATA[18]_i_1_n_0 ;
+  wire \T_RDATA[18]_i_2_n_0 ;
+  wire \T_RDATA[18]_i_3_n_0 ;
+  wire \T_RDATA[18]_i_5_n_0 ;
+  wire \T_RDATA[18]_i_6_n_0 ;
+  wire \T_RDATA[19]_i_1_n_0 ;
+  wire \T_RDATA[19]_i_2_n_0 ;
+  wire \T_RDATA[19]_i_3_n_0 ;
+  wire \T_RDATA[19]_i_4_n_0 ;
+  wire \T_RDATA[1]_i_1_n_0 ;
+  wire \T_RDATA[1]_i_2_n_0 ;
+  wire \T_RDATA[1]_i_3_n_0 ;
+  wire \T_RDATA[20]_i_1_n_0 ;
+  wire \T_RDATA[20]_i_2_n_0 ;
+  wire \T_RDATA[21]_i_1_n_0 ;
+  wire \T_RDATA[21]_i_2_n_0 ;
+  wire \T_RDATA[22]_i_1_n_0 ;
+  wire \T_RDATA[22]_i_2_n_0 ;
+  wire \T_RDATA[23]_i_1_n_0 ;
+  wire \T_RDATA[23]_i_2_n_0 ;
+  wire \T_RDATA[23]_i_3_n_0 ;
+  wire \T_RDATA[23]_i_5_n_0 ;
+  wire \T_RDATA[24]_i_1_n_0 ;
+  wire \T_RDATA[24]_i_2_n_0 ;
+  wire \T_RDATA[25]_i_1_n_0 ;
+  wire \T_RDATA[25]_i_2_n_0 ;
+  wire \T_RDATA[26]_i_1_n_0 ;
+  wire \T_RDATA[27]_i_1_n_0 ;
+  wire \T_RDATA[27]_i_2_n_0 ;
+  wire \T_RDATA[27]_i_3_n_0 ;
+  wire \T_RDATA[28]_i_1_n_0 ;
+  wire \T_RDATA[28]_i_2_n_0 ;
+  wire \T_RDATA[29]_i_1_n_0 ;
+  wire \T_RDATA[2]_i_1_n_0 ;
+  wire \T_RDATA[2]_i_2_n_0 ;
+  wire \T_RDATA[2]_i_3_n_0 ;
+  wire \T_RDATA[30]_i_1_n_0 ;
+  wire \T_RDATA[30]_i_2_n_0 ;
+  wire \T_RDATA[31]_i_1_n_0 ;
+  wire \T_RDATA[3]_i_1_n_0 ;
+  wire \T_RDATA[3]_i_2_n_0 ;
+  wire \T_RDATA[3]_i_3_n_0 ;
+  wire \T_RDATA[4]_i_1_n_0 ;
+  wire \T_RDATA[4]_i_2_n_0 ;
+  wire \T_RDATA[5]_i_1_n_0 ;
+  wire \T_RDATA[5]_i_2_n_0 ;
+  wire \T_RDATA[5]_i_3_n_0 ;
+  wire \T_RDATA[6]_i_1_n_0 ;
+  wire \T_RDATA[6]_i_2_n_0 ;
+  wire \T_RDATA[7]_i_1_n_0 ;
+  wire \T_RDATA[7]_i_2_n_0 ;
+  wire \T_RDATA[8]_i_1_n_0 ;
+  wire \T_RDATA[8]_i_2_n_0 ;
+  wire \T_RDATA[9]_i_1_n_0 ;
+  wire \T_RDATA[9]_i_2_n_0 ;
+  wire \T_RDATA[9]_i_3_n_0 ;
+  wire [31:0]T_WDATA;
+  wire [3:0]\count_reg[12] ;
+  wire [2:0]\count_reg[15] ;
+  wire [3:0]\count_reg[8] ;
+  wire \csr_mdio_ctl_clk_div[15]_i_3_n_0 ;
+  wire [15:0]\csr_mdio_ctl_clk_div_reg[15]_0 ;
+  wire [3:0]\csr_mdio_ctl_clk_div_reg[15]_1 ;
+  wire csr_mdio_ctl_en11_out;
+  wire csr_mdio_ctl_en_reg_0;
+  wire [15:0]csr_mdio_ctl_en_reg_1;
+  wire [15:0]csr_mdio_ctl_en_reg_2;
+  wire csr_mdio_ctl_en_reg_3;
+  wire csr_mdio_ctl_rst_reg_0;
+  wire \csr_mdio_rd_data[0]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[10]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[11]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[12]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[13]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[14]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[15]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[15]_i_2_n_0 ;
+  wire \csr_mdio_rd_data[1]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[2]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[3]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[4]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[5]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[6]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[7]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[8]_i_1_n_0 ;
+  wire \csr_mdio_rd_data[9]_i_1_n_0 ;
+  wire [0:0]\csr_mdio_rd_data_reg[0]_0 ;
+  wire [15:0]\csr_mdio_rd_data_reg[15]_0 ;
+  wire csr_mdio_sts_ack_i_1_n_0;
+  wire csr_mdio_sts_ack_i_2_n_0;
+  wire csr_mdio_sts_done_i_1_n_0;
+  wire csr_mdio_sts_ip_rd_i_1_n_0;
+  wire csr_mdio_sts_ip_rd_i_2_n_0;
+  wire csr_mdio_sts_ip_rd_i_3_n_0;
+  wire csr_mdio_sts_ip_wr_i_1_n_0;
+  wire csr_mdio_sts_ip_wr_i_2_n_0;
+  wire csr_mdio_sts_ip_wr_i_3_n_0;
+  wire csr_mdio_sts_ip_wr_i_4_n_0;
+  wire csr_mdio_sts_ip_wr_i_5_n_0;
+  wire [14:0]\data_reg[15] ;
+  wire [1:0]out;
+  wire [25:1]p_0_in;
+  wire [25:1]p_1_in;
+  wire [17:1]p_2_in;
+  wire [17:16]p_3_in;
+  wire [3:0]\raddr_reg[4] ;
+  wire [1:0]state_mdio__0;
+  wire togN;
+  wire togP11_out;
+  wire togPN;
+  wire [15:0]togPN1_carry__0;
+
+  assign PADDR_0_sp_1 = PADDR_0_sn_1;
+  assign PADDR_2_sp_1 = PADDR_2_sn_1;
+  assign PADDR_3_sp_1 = PADDR_3_sn_1;
+  assign PADDR_4_sp_1 = PADDR_4_sn_1;
+  LUT6 #(
+    .INIT(64'hF00000E0F000F0E0)) 
+    \FSM_sequential_state_mdio[0]_i_1 
+       (.I0(MDIO_GO_RD),
+        .I1(MDIO_GO_WR),
+        .I2(MDIO_ENABLE),
+        .I3(state_mdio__0[0]),
+        .I4(state_mdio__0[1]),
+        .I5(MDIO_DONE),
+        .O(\FSM_sequential_state_mdio[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hA880)) 
+    \FSM_sequential_state_mdio[1]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(state_mdio__0[1]),
+        .I3(MDIO_DONE),
+        .O(\FSM_sequential_state_mdio[1]_i_1_n_0 ));
+  (* FSM_ENCODED_STATES = "SM_GO:01,SM_END:10,SM_IDLE:00,iSTATE:11" *) 
+  FDCE \FSM_sequential_state_mdio_reg[0] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\FSM_sequential_state_mdio[0]_i_1_n_0 ),
+        .Q(state_mdio__0[0]));
+  (* FSM_ENCODED_STATES = "SM_GO:01,SM_END:10,SM_IDLE:00,iSTATE:11" *) 
+  FDCE \FSM_sequential_state_mdio_reg[1] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\FSM_sequential_state_mdio[1]_i_1_n_0 ),
+        .Q(state_mdio__0[1]));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    IRQ_INST_0
+       (.I0(p_2_in[16]),
+        .I1(p_3_in[16]),
+        .I2(p_2_in[17]),
+        .I3(p_3_in[17]),
+        .O(IRQ));
+  LUT2 #(
+    .INIT(4'h8)) 
+    MDC_i_1
+       (.I0(MDIO_ENABLE),
+        .I1(togPN),
+        .O(csr_mdio_ctl_en_reg_0));
+  LUT2 #(
+    .INIT(4'hB)) 
+    MDC_i_2
+       (.I0(MDIO_RST),
+        .I1(PRESETn),
+        .O(csr_mdio_ctl_rst_reg_0));
+  FDCE MDIO_GO_RD_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(MDIO_GO_RD_reg_0),
+        .Q(MDIO_GO_RD));
+  FDCE MDIO_GO_WR_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(MDIO_GO_WR_reg_0),
+        .Q(MDIO_GO_WR));
+  LUT6 #(
+    .INIT(64'h0E00FFFF0E000000)) 
+    MDIO_GO_i_1
+       (.I0(MDIO_GO_WR),
+        .I1(MDIO_GO_RD),
+        .I2(state_mdio__0[0]),
+        .I3(MDIO_ENABLE),
+        .I4(csr_mdio_sts_ack_i_2_n_0),
+        .I5(MDIO_GO),
+        .O(MDIO_GO_i_1_n_0));
+  FDCE MDIO_GO_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(MDIO_GO_i_1_n_0),
+        .Q(MDIO_GO));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_PHYADR[0]_i_1 
+       (.I0(p_0_in[21]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[21]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_PHYADR[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_PHYADR[1]_i_1 
+       (.I0(p_0_in[22]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[22]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_PHYADR[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_PHYADR[2]_i_1 
+       (.I0(p_0_in[23]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[23]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_PHYADR[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_PHYADR[3]_i_1 
+       (.I0(p_0_in[24]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[24]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_PHYADR[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h1110FFFF)) 
+    \MDIO_PHYADR[4]_i_1 
+       (.I0(state_mdio__0[0]),
+        .I1(state_mdio__0[1]),
+        .I2(MDIO_GO_RD),
+        .I3(MDIO_GO_WR),
+        .I4(MDIO_ENABLE),
+        .O(\MDIO_PHYADR[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_PHYADR[4]_i_2 
+       (.I0(p_0_in[25]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[25]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_PHYADR[4]_i_2_n_0 ));
+  FDCE \MDIO_PHYADR_reg[0] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_PHYADR[0]_i_1_n_0 ),
+        .Q(MDIO_PHYADR));
+  FDCE \MDIO_PHYADR_reg[1] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_PHYADR[1]_i_1_n_0 ),
+        .Q(\MDIO_PHYADR_reg[4]_0 [0]));
+  FDCE \MDIO_PHYADR_reg[2] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_PHYADR[2]_i_1_n_0 ),
+        .Q(\MDIO_PHYADR_reg[4]_0 [1]));
+  FDCE \MDIO_PHYADR_reg[3] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_PHYADR[3]_i_1_n_0 ),
+        .Q(\MDIO_PHYADR_reg[4]_0 [2]));
+  FDCE \MDIO_PHYADR_reg[4] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_PHYADR[4]_i_2_n_0 ),
+        .Q(\MDIO_PHYADR_reg[4]_0 [3]));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_REGADR[0]_i_1 
+       (.I0(p_0_in[16]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[16]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_REGADR[1]_i_1 
+       (.I0(p_0_in[17]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[17]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_REGADR[2]_i_1 
+       (.I0(p_0_in[18]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[18]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_REGADR[3]_i_1 
+       (.I0(p_0_in[19]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[19]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \MDIO_REGADR[4]_i_1 
+       (.I0(p_0_in[20]),
+        .I1(MDIO_GO_WR),
+        .I2(p_1_in[20]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR[4]_i_1_n_0 ));
+  FDCE \MDIO_REGADR_reg[0] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_REGADR[0]_i_1_n_0 ),
+        .Q(MDIO_REGADR[0]));
+  FDCE \MDIO_REGADR_reg[1] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_REGADR[1]_i_1_n_0 ),
+        .Q(MDIO_REGADR[1]));
+  FDCE \MDIO_REGADR_reg[2] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_REGADR[2]_i_1_n_0 ),
+        .Q(MDIO_REGADR[2]));
+  FDCE \MDIO_REGADR_reg[3] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_REGADR[3]_i_1_n_0 ),
+        .Q(MDIO_REGADR[3]));
+  FDCE \MDIO_REGADR_reg[4] 
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_REGADR[4]_i_1_n_0 ),
+        .Q(MDIO_REGADR[4]));
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[0]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(Q),
+        .O(\MDIO_WDATA[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[10]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[10]),
+        .O(\MDIO_WDATA[10]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[11]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[11]),
+        .O(\MDIO_WDATA[11]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[12]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[12]),
+        .O(\MDIO_WDATA[12]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[13]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[13]),
+        .O(\MDIO_WDATA[13]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[14]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[14]),
+        .O(\MDIO_WDATA[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h10FF)) 
+    \MDIO_WDATA[15]_i_1 
+       (.I0(state_mdio__0[0]),
+        .I1(state_mdio__0[1]),
+        .I2(MDIO_GO_WR),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA[15]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[15]_i_2 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[15]),
+        .O(\MDIO_WDATA[15]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[1]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[1]),
+        .O(\MDIO_WDATA[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[2]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[2]),
+        .O(\MDIO_WDATA[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[3]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[3]),
+        .O(\MDIO_WDATA[3]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[4]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[4]),
+        .O(\MDIO_WDATA[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[5]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[5]),
+        .O(\MDIO_WDATA[5]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[6]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[6]),
+        .O(\MDIO_WDATA[6]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[7]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[7]),
+        .O(\MDIO_WDATA[7]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[8]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[8]),
+        .O(\MDIO_WDATA[8]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \MDIO_WDATA[9]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(p_1_in[9]),
+        .O(\MDIO_WDATA[9]_i_1_n_0 ));
+  FDCE \MDIO_WDATA_reg[0] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[0]_i_1_n_0 ),
+        .Q(MDIO_WDATA[0]));
+  FDCE \MDIO_WDATA_reg[10] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[10]_i_1_n_0 ),
+        .Q(MDIO_WDATA[10]));
+  FDCE \MDIO_WDATA_reg[11] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[11]_i_1_n_0 ),
+        .Q(MDIO_WDATA[11]));
+  FDCE \MDIO_WDATA_reg[12] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[12]_i_1_n_0 ),
+        .Q(MDIO_WDATA[12]));
+  FDCE \MDIO_WDATA_reg[13] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[13]_i_1_n_0 ),
+        .Q(MDIO_WDATA[13]));
+  FDCE \MDIO_WDATA_reg[14] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[14]_i_1_n_0 ),
+        .Q(MDIO_WDATA[14]));
+  FDCE \MDIO_WDATA_reg[15] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[15]_i_2_n_0 ),
+        .Q(MDIO_WDATA[15]));
+  FDCE \MDIO_WDATA_reg[1] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[1]_i_1_n_0 ),
+        .Q(MDIO_WDATA[1]));
+  FDCE \MDIO_WDATA_reg[2] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[2]_i_1_n_0 ),
+        .Q(MDIO_WDATA[2]));
+  FDCE \MDIO_WDATA_reg[3] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[3]_i_1_n_0 ),
+        .Q(MDIO_WDATA[3]));
+  FDCE \MDIO_WDATA_reg[4] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[4]_i_1_n_0 ),
+        .Q(MDIO_WDATA[4]));
+  FDCE \MDIO_WDATA_reg[5] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[5]_i_1_n_0 ),
+        .Q(MDIO_WDATA[5]));
+  FDCE \MDIO_WDATA_reg[6] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[6]_i_1_n_0 ),
+        .Q(MDIO_WDATA[6]));
+  FDCE \MDIO_WDATA_reg[7] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[7]_i_1_n_0 ),
+        .Q(MDIO_WDATA[7]));
+  FDCE \MDIO_WDATA_reg[8] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[8]_i_1_n_0 ),
+        .Q(MDIO_WDATA[8]));
+  FDCE \MDIO_WDATA_reg[9] 
+       (.C(PCLK),
+        .CE(\MDIO_WDATA[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\MDIO_WDATA[9]_i_1_n_0 ),
+        .Q(MDIO_WDATA[9]));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    MDIO_WR_i_1
+       (.I0(MDIO_GO_WR),
+        .I1(MDIO_ENABLE),
+        .O(MDIO_WR_i_1_n_0));
+  FDCE MDIO_WR_reg
+       (.C(PCLK),
+        .CE(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(MDIO_WR_i_1_n_0),
+        .Q(MDIO_WR));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[0]_INST_0 
+       (.I0(T_RDATA[0]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[0]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[10]_INST_0 
+       (.I0(T_RDATA[10]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[10]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[11]_INST_0 
+       (.I0(T_RDATA[11]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[11]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[12]_INST_0 
+       (.I0(T_RDATA[12]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[12]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[13]_INST_0 
+       (.I0(T_RDATA[13]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[13]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[14]_INST_0 
+       (.I0(T_RDATA[14]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[14]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[15]_INST_0 
+       (.I0(T_RDATA[15]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[15]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[16]_INST_0 
+       (.I0(T_RDATA[16]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[16]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[17]_INST_0 
+       (.I0(T_RDATA[17]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[17]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[18]_INST_0 
+       (.I0(T_RDATA[18]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[18]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[19]_INST_0 
+       (.I0(T_RDATA[19]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[19]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[1]_INST_0 
+       (.I0(T_RDATA[1]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[1]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[20]_INST_0 
+       (.I0(T_RDATA[20]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[20]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[21]_INST_0 
+       (.I0(T_RDATA[21]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[21]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[22]_INST_0 
+       (.I0(T_RDATA[22]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[22]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[23]_INST_0 
+       (.I0(T_RDATA[23]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[23]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[24]_INST_0 
+       (.I0(T_RDATA[24]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[24]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[25]_INST_0 
+       (.I0(T_RDATA[25]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[25]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[26]_INST_0 
+       (.I0(T_RDATA[26]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[26]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[27]_INST_0 
+       (.I0(T_RDATA[27]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[27]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[28]_INST_0 
+       (.I0(T_RDATA[28]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[28]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[29]_INST_0 
+       (.I0(T_RDATA[29]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[29]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[2]_INST_0 
+       (.I0(T_RDATA[2]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[2]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[30]_INST_0 
+       (.I0(T_RDATA[30]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[30]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[31]_INST_0 
+       (.I0(T_RDATA[31]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[31]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[3]_INST_0 
+       (.I0(T_RDATA[3]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[3]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[4]_INST_0 
+       (.I0(T_RDATA[4]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[4]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[5]_INST_0 
+       (.I0(T_RDATA[5]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[5]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[6]_INST_0 
+       (.I0(T_RDATA[6]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[6]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[7]_INST_0 
+       (.I0(T_RDATA[7]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[7]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[8]_INST_0 
+       (.I0(T_RDATA[8]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[8]));
+  LUT4 #(
+    .INIT(16'h0800)) 
+    \PRDATA[9]_INST_0 
+       (.I0(T_RDATA[9]),
+        .I1(PENABLE),
+        .I2(PWRITE),
+        .I3(PSEL),
+        .O(PRDATA[9]));
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[0]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(MDIO_I),
+        .O(csr_mdio_ctl_en_reg_2[0]));
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[10]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [9]),
+        .O(csr_mdio_ctl_en_reg_2[10]));
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[11]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [10]),
+        .O(csr_mdio_ctl_en_reg_2[11]));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[12]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [11]),
+        .O(csr_mdio_ctl_en_reg_2[12]));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[13]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [12]),
+        .O(csr_mdio_ctl_en_reg_2[13]));
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[14]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [13]),
+        .O(csr_mdio_ctl_en_reg_2[14]));
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[15]_i_2 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [14]),
+        .O(csr_mdio_ctl_en_reg_2[15]));
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[1]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [0]),
+        .O(csr_mdio_ctl_en_reg_2[1]));
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[2]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [1]),
+        .O(csr_mdio_ctl_en_reg_2[2]));
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[3]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [2]),
+        .O(csr_mdio_ctl_en_reg_2[3]));
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[4]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [3]),
+        .O(csr_mdio_ctl_en_reg_2[4]));
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[5]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [4]),
+        .O(csr_mdio_ctl_en_reg_2[5]));
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[6]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [5]),
+        .O(csr_mdio_ctl_en_reg_2[6]));
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[7]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [6]),
+        .O(csr_mdio_ctl_en_reg_2[7]));
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[8]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [7]),
+        .O(csr_mdio_ctl_en_reg_2[8]));
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \RDATA[9]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(\csr_mdio_rd_data_reg[15]_0 [8]),
+        .O(csr_mdio_ctl_en_reg_2[9]));
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
+    \T_RDATA[0]_i_3 
+       (.I0(PADDR[4]),
+        .I1(PSEL),
+        .I2(PADDR[5]),
+        .O(\PADDR[4]_0 ));
+  LUT6 #(
+    .INIT(64'h00000000EAAAAAAA)) 
+    \T_RDATA[10]_i_1 
+       (.I0(\T_RDATA[10]_i_2_n_0 ),
+        .I1(p_0_in[10]),
+        .I2(PADDR_2_sn_1),
+        .I3(PADDR[3]),
+        .I4(PSEL_0),
+        .I5(\T_RDATA[28]_i_2_n_0 ),
+        .O(\T_RDATA[10]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h5045FFFF0045FFFF)) 
+    \T_RDATA[10]_i_2 
+       (.I0(PADDR[2]),
+        .I1(\csr_mdio_ctl_clk_div_reg[15]_0 [10]),
+        .I2(PADDR[5]),
+        .I3(PADDR[3]),
+        .I4(PSEL),
+        .I5(p_1_in[10]),
+        .O(\T_RDATA[10]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0202A20202020202)) 
+    \T_RDATA[11]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(\T_RDATA[11]_i_2_n_0 ),
+        .I2(PADDR_2_sn_1),
+        .I3(p_0_in[11]),
+        .I4(\T_RDATA[18]_i_3_n_0 ),
+        .I5(PADDR[3]),
+        .O(\T_RDATA[11]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h1F00DF003C003C00)) 
+    \T_RDATA[11]_i_2 
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [11]),
+        .I1(PADDR[3]),
+        .I2(PADDR[4]),
+        .I3(PSEL),
+        .I4(p_1_in[11]),
+        .I5(PADDR[5]),
+        .O(\T_RDATA[11]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h02020202A2020202)) 
+    \T_RDATA[12]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(\T_RDATA[12]_i_2_n_0 ),
+        .I2(PADDR_2_sn_1),
+        .I3(p_0_in[12]),
+        .I4(PADDR[5]),
+        .I5(PADDR_4_sn_1),
+        .O(\T_RDATA[12]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h73F3F3FF7FF3F3FF)) 
+    \T_RDATA[12]_i_2 
+       (.I0(p_1_in[12]),
+        .I1(PSEL),
+        .I2(PADDR[3]),
+        .I3(PADDR[4]),
+        .I4(PADDR[5]),
+        .I5(\csr_mdio_ctl_clk_div_reg[15]_0 [12]),
+        .O(\T_RDATA[12]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000A8FF20FF)) 
+    \T_RDATA[13]_i_1 
+       (.I0(PSEL_0),
+        .I1(PADDR[3]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [13]),
+        .I3(\T_RDATA[13]_i_2_n_0 ),
+        .I4(p_1_in[13]),
+        .I5(\T_RDATA[13]_i_3_n_0 ),
+        .O(\T_RDATA[13]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
+    \T_RDATA[13]_i_2 
+       (.I0(PADDR[4]),
+        .I1(PSEL),
+        .I2(PADDR[2]),
+        .O(\T_RDATA[13]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hB0BB0000FFFFFFFF)) 
+    \T_RDATA[13]_i_3 
+       (.I0(PADDR[5]),
+        .I1(PADDR_3_sn_1),
+        .I2(PADDR_4_sn_1),
+        .I3(p_0_in[13]),
+        .I4(\T_RDATA[13]_i_4_n_0 ),
+        .I5(PADDR_0_sn_1),
+        .O(\T_RDATA[13]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  LUT4 #(
+    .INIT(16'hB3FF)) 
+    \T_RDATA[13]_i_4 
+       (.I0(PADDR[2]),
+        .I1(PADDR[4]),
+        .I2(PADDR[5]),
+        .I3(PSEL),
+        .O(\T_RDATA[13]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hA808A8A8A808A808)) 
+    \T_RDATA[14]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(\T_RDATA[30]_i_2_n_0 ),
+        .I2(PSEL_1),
+        .I3(\T_RDATA[14]_i_2_n_0 ),
+        .I4(\T_RDATA[14]_i_3_n_0 ),
+        .I5(p_0_in[14]),
+        .O(\T_RDATA[14]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h4F5F4F0F5F5F5F5F)) 
+    \T_RDATA[14]_i_2 
+       (.I0(PADDR[2]),
+        .I1(p_1_in[14]),
+        .I2(PSEL),
+        .I3(PADDR[3]),
+        .I4(\csr_mdio_ctl_clk_div_reg[15]_0 [14]),
+        .I5(PADDR[5]),
+        .O(\T_RDATA[14]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \T_RDATA[14]_i_3 
+       (.I0(PADDR[3]),
+        .I1(PADDR[5]),
+        .I2(PSEL),
+        .I3(PADDR[2]),
+        .O(\T_RDATA[14]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  LUT3 #(
+    .INIT(8'h04)) 
+    \T_RDATA[15]_i_1 
+       (.I0(\T_RDATA[28]_i_2_n_0 ),
+        .I1(PADDR[5]),
+        .I2(\T_RDATA[15]_i_2_n_0 ),
+        .O(\T_RDATA[15]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h404CC0C0737FFFFF)) 
+    \T_RDATA[15]_i_2 
+       (.I0(p_0_in[15]),
+        .I1(PSEL),
+        .I2(PADDR[2]),
+        .I3(p_1_in[15]),
+        .I4(PADDR[3]),
+        .I5(\csr_mdio_ctl_clk_div_reg[15]_0 [15]),
+        .O(\T_RDATA[15]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h00002000AAAAAAAA)) 
+    \T_RDATA[16]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(PADDR[3]),
+        .I2(PSEL),
+        .I3(PADDR[2]),
+        .I4(PADDR[5]),
+        .I5(\T_RDATA[16]_i_2_n_0 ),
+        .O(\T_RDATA[16]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h4545000045FFFFFF)) 
+    \T_RDATA[16]_i_2 
+       (.I0(\T_RDATA[16]_i_3_n_0 ),
+        .I1(\T_RDATA[16]_i_4_n_0 ),
+        .I2(p_1_in[16]),
+        .I3(PADDR[4]),
+        .I4(PSEL_0),
+        .I5(\T_RDATA[13]_i_2_n_0 ),
+        .O(\T_RDATA[16]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hA0CFFFFFA0C00000)) 
+    \T_RDATA[16]_i_3 
+       (.I0(p_0_in[16]),
+        .I1(p_2_in[16]),
+        .I2(PADDR[2]),
+        .I3(PADDR[3]),
+        .I4(PSEL),
+        .I5(p_3_in[16]),
+        .O(\T_RDATA[16]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  LUT3 #(
+    .INIT(8'hF7)) 
+    \T_RDATA[16]_i_4 
+       (.I0(PSEL),
+        .I1(PADDR[3]),
+        .I2(PADDR[2]),
+        .O(\T_RDATA[16]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h88800080AAAAAAAA)) 
+    \T_RDATA[17]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(\T_RDATA[17]_i_2_n_0 ),
+        .I2(p_2_in[17]),
+        .I3(PADDR_3_sn_1),
+        .I4(p_0_in[17]),
+        .I5(\T_RDATA[17]_i_3_n_0 ),
+        .O(\T_RDATA[17]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \T_RDATA[17]_i_2 
+       (.I0(PADDR[2]),
+        .I1(PADDR[4]),
+        .I2(PADDR[5]),
+        .I3(PSEL),
+        .O(\T_RDATA[17]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h07FFA7FFFFFFFFFF)) 
+    \T_RDATA[17]_i_3 
+       (.I0(PADDR[5]),
+        .I1(p_3_in[17]),
+        .I2(PADDR[3]),
+        .I3(PSEL),
+        .I4(p_1_in[17]),
+        .I5(\T_RDATA[13]_i_2_n_0 ),
+        .O(\T_RDATA[17]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000020AA22AA)) 
+    \T_RDATA[18]_i_1 
+       (.I0(\T_RDATA[18]_i_2_n_0 ),
+        .I1(\T_RDATA[18]_i_3_n_0 ),
+        .I2(p_0_in[18]),
+        .I3(PADDR_3_sn_1),
+        .I4(PADDR[2]),
+        .I5(\T_RDATA[18]_i_5_n_0 ),
+        .O(\T_RDATA[18]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h5511555550115555)) 
+    \T_RDATA[18]_i_2 
+       (.I0(\T_RDATA[18]_i_6_n_0 ),
+        .I1(PADDR[5]),
+        .I2(PADDR[2]),
+        .I3(PADDR[3]),
+        .I4(PSEL),
+        .I5(p_1_in[18]),
+        .O(\T_RDATA[18]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \T_RDATA[18]_i_3 
+       (.I0(PADDR[4]),
+        .I1(PSEL),
+        .I2(PADDR[5]),
+        .O(\T_RDATA[18]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \T_RDATA[18]_i_4 
+       (.I0(PADDR[3]),
+        .I1(PSEL),
+        .O(PADDR_3_sn_1));
+  LUT5 #(
+    .INIT(32'hAAAAAAA8)) 
+    \T_RDATA[18]_i_5 
+       (.I0(PSEL),
+        .I1(PADDR[0]),
+        .I2(PADDR[1]),
+        .I3(PADDR[6]),
+        .I4(PADDR[7]),
+        .O(\T_RDATA[18]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT3 #(
+    .INIT(8'hFB)) 
+    \T_RDATA[18]_i_6 
+       (.I0(PWRITE),
+        .I1(PSEL),
+        .I2(PENABLE),
+        .O(\T_RDATA[18]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'h000008AAAAAA08AA)) 
+    \T_RDATA[19]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(p_1_in[19]),
+        .I2(\T_RDATA[19]_i_2_n_0 ),
+        .I3(\T_RDATA[19]_i_3_n_0 ),
+        .I4(PADDR_2_sn_1),
+        .I5(\T_RDATA[19]_i_4_n_0 ),
+        .O(\T_RDATA[19]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \T_RDATA[19]_i_2 
+       (.I0(PADDR[4]),
+        .I1(PADDR[5]),
+        .I2(PSEL),
+        .I3(PADDR[3]),
+        .O(\T_RDATA[19]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT4 #(
+    .INIT(16'hFFF7)) 
+    \T_RDATA[19]_i_3 
+       (.I0(PADDR[5]),
+        .I1(PSEL),
+        .I2(PADDR[4]),
+        .I3(PADDR[3]),
+        .O(\T_RDATA[19]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h4CCCCCC0)) 
+    \T_RDATA[19]_i_4 
+       (.I0(p_0_in[19]),
+        .I1(PSEL),
+        .I2(PADDR[4]),
+        .I3(PADDR[3]),
+        .I4(PADDR[5]),
+        .O(\T_RDATA[19]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000FFFFBABB)) 
+    \T_RDATA[1]_i_1 
+       (.I0(PADDR_2_sn_1),
+        .I1(PADDR_4_sn_1),
+        .I2(p_1_in[1]),
+        .I3(PSEL_0),
+        .I4(\T_RDATA[1]_i_2_n_0 ),
+        .I5(\T_RDATA[1]_i_3_n_0 ),
+        .O(\T_RDATA[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h0F0F8F3F)) 
+    \T_RDATA[1]_i_2 
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [1]),
+        .I1(PADDR[5]),
+        .I2(PSEL),
+        .I3(PADDR[4]),
+        .I4(PADDR[3]),
+        .O(\T_RDATA[1]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hDDDDDDDD555DDD5D)) 
+    \T_RDATA[1]_i_3 
+       (.I0(PADDR_0_sn_1),
+        .I1(PADDR_2_sn_1),
+        .I2(p_2_in[1]),
+        .I3(PADDR_3_sn_1),
+        .I4(p_0_in[1]),
+        .I5(\T_RDATA[18]_i_3_n_0 ),
+        .O(\T_RDATA[1]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h02020202A2020202)) 
+    \T_RDATA[20]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(\T_RDATA[20]_i_2_n_0 ),
+        .I2(PADDR_2_sn_1),
+        .I3(p_0_in[20]),
+        .I4(PADDR[5]),
+        .I5(PADDR_4_sn_1),
+        .O(\T_RDATA[20]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT5 #(
+    .INIT(32'h7CFF33FF)) 
+    \T_RDATA[20]_i_2 
+       (.I0(p_1_in[20]),
+        .I1(PADDR[4]),
+        .I2(PADDR[3]),
+        .I3(PSEL),
+        .I4(PADDR[5]),
+        .O(\T_RDATA[20]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \T_RDATA[20]_i_3 
+       (.I0(PADDR[4]),
+        .I1(PADDR[3]),
+        .I2(PSEL),
+        .O(PADDR_4_sn_1));
+  LUT6 #(
+    .INIT(64'hA2A2820222228202)) 
+    \T_RDATA[21]_i_1 
+       (.I0(\T_RDATA[21]_i_2_n_0 ),
+        .I1(PSEL_0),
+        .I2(PSEL_1),
+        .I3(p_1_in[21]),
+        .I4(PADDR_2_sn_1),
+        .I5(p_0_in[21]),
+        .O(\T_RDATA[21]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \T_RDATA[21]_i_2 
+       (.I0(PADDR[3]),
+        .I1(PSEL),
+        .I2(PADDR_0_sn_1),
+        .O(\T_RDATA[21]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \T_RDATA[21]_i_3 
+       (.I0(PSEL),
+        .I1(PADDR[5]),
+        .O(PSEL_0));
+  LUT6 #(
+    .INIT(64'h00000000BB3F0000)) 
+    \T_RDATA[22]_i_1 
+       (.I0(PADDR[4]),
+        .I1(PSEL),
+        .I2(PADDR[5]),
+        .I3(PADDR[3]),
+        .I4(PADDR_0_sn_1),
+        .I5(\T_RDATA[22]_i_2_n_0 ),
+        .O(\T_RDATA[22]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h22080000AA080000)) 
+    \T_RDATA[22]_i_2 
+       (.I0(PADDR[3]),
+        .I1(PADDR[5]),
+        .I2(p_1_in[22]),
+        .I3(PADDR[2]),
+        .I4(PSEL),
+        .I5(p_0_in[22]),
+        .O(\T_RDATA[22]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000111000000100)) 
+    \T_RDATA[23]_i_1 
+       (.I0(\T_RDATA[23]_i_2_n_0 ),
+        .I1(\T_RDATA[23]_i_3_n_0 ),
+        .I2(PADDR_2_sn_1),
+        .I3(p_1_in[23]),
+        .I4(\T_RDATA[23]_i_5_n_0 ),
+        .I5(p_0_in[23]),
+        .O(\T_RDATA[23]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT5 #(
+    .INIT(32'hFFFFFFFB)) 
+    \T_RDATA[23]_i_2 
+       (.I0(PWRITE),
+        .I1(PSEL),
+        .I2(PENABLE),
+        .I3(PADDR[7]),
+        .I4(PADDR[6]),
+        .O(\T_RDATA[23]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT4 #(
+    .INIT(16'hFFF7)) 
+    \T_RDATA[23]_i_3 
+       (.I0(PADDR[4]),
+        .I1(PSEL),
+        .I2(PADDR[1]),
+        .I3(PADDR[0]),
+        .O(\T_RDATA[23]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \T_RDATA[23]_i_4 
+       (.I0(PADDR[2]),
+        .I1(PSEL),
+        .O(PADDR_2_sn_1));
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \T_RDATA[23]_i_5 
+       (.I0(PADDR[5]),
+        .I1(PSEL),
+        .I2(PADDR[3]),
+        .O(\T_RDATA[23]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \T_RDATA[24]_i_1 
+       (.I0(\T_RDATA[27]_i_2_n_0 ),
+        .I1(\T_RDATA[24]_i_2_n_0 ),
+        .O(\T_RDATA[24]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h22080000AA080000)) 
+    \T_RDATA[24]_i_2 
+       (.I0(PADDR[3]),
+        .I1(PADDR[5]),
+        .I2(p_1_in[24]),
+        .I3(PADDR[2]),
+        .I4(PSEL),
+        .I5(p_0_in[24]),
+        .O(\T_RDATA[24]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'h22220222)) 
+    \T_RDATA[25]_i_1 
+       (.I0(\T_RDATA[25]_i_2_n_0 ),
+        .I1(\T_RDATA[28]_i_2_n_0 ),
+        .I2(PADDR[5]),
+        .I3(PSEL),
+        .I4(PADDR[3]),
+        .O(\T_RDATA[25]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hCFFFFFFFAF0FFFFF)) 
+    \T_RDATA[25]_i_2 
+       (.I0(p_1_in[25]),
+        .I1(p_0_in[25]),
+        .I2(PSEL),
+        .I3(PADDR[5]),
+        .I4(PADDR[3]),
+        .I5(PADDR[2]),
+        .O(\T_RDATA[25]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h7F0F00001F1F0000)) 
+    \T_RDATA[26]_i_1 
+       (.I0(PADDR[2]),
+        .I1(PADDR[5]),
+        .I2(PSEL),
+        .I3(PADDR[4]),
+        .I4(PADDR_0_sn_1),
+        .I5(PADDR[3]),
+        .O(\T_RDATA[26]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  LUT4 #(
+    .INIT(16'hA22A)) 
+    \T_RDATA[27]_i_1 
+       (.I0(\T_RDATA[27]_i_2_n_0 ),
+        .I1(PSEL),
+        .I2(PADDR[3]),
+        .I3(PADDR[2]),
+        .O(\T_RDATA[27]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000B00)) 
+    \T_RDATA[27]_i_2 
+       (.I0(\T_RDATA[27]_i_3_n_0 ),
+        .I1(PADDR_4_sn_1),
+        .I2(PENABLE),
+        .I3(PSEL),
+        .I4(PWRITE),
+        .I5(\T_RDATA[18]_i_5_n_0 ),
+        .O(\T_RDATA[27]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h5557)) 
+    \T_RDATA[27]_i_3 
+       (.I0(PSEL),
+        .I1(PADDR[4]),
+        .I2(PADDR[3]),
+        .I3(PADDR[5]),
+        .O(\T_RDATA[27]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  LUT5 #(
+    .INIT(32'h00009080)) 
+    \T_RDATA[28]_i_1 
+       (.I0(PADDR[3]),
+        .I1(PADDR[5]),
+        .I2(PSEL),
+        .I3(PADDR[2]),
+        .I4(\T_RDATA[28]_i_2_n_0 ),
+        .O(\T_RDATA[28]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT5 #(
+    .INIT(32'hFEFFFFFF)) 
+    \T_RDATA[28]_i_2 
+       (.I0(\T_RDATA[23]_i_2_n_0 ),
+        .I1(PADDR[0]),
+        .I2(PADDR[1]),
+        .I3(PSEL),
+        .I4(PADDR[4]),
+        .O(\T_RDATA[28]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0020000000202000)) 
+    \T_RDATA[29]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(PADDR[4]),
+        .I2(PSEL),
+        .I3(PADDR[5]),
+        .I4(PADDR[3]),
+        .I5(PADDR[2]),
+        .O(\T_RDATA[29]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h40404040FFFF40FF)) 
+    \T_RDATA[2]_i_1 
+       (.I0(PADDR_2_sn_1),
+        .I1(\T_RDATA[30]_i_2_n_0 ),
+        .I2(PADDR_0_sn_1),
+        .I3(\T_RDATA[2]_i_2_n_0 ),
+        .I4(\T_RDATA[2]_i_3_n_0 ),
+        .I5(\T_RDATA[28]_i_2_n_0 ),
+        .O(\T_RDATA[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hB0A0B0F0A0A0A0A0)) 
+    \T_RDATA[2]_i_2 
+       (.I0(PADDR[2]),
+        .I1(p_1_in[2]),
+        .I2(PSEL),
+        .I3(PADDR[3]),
+        .I4(\csr_mdio_ctl_clk_div_reg[15]_0 [2]),
+        .I5(PADDR[5]),
+        .O(\T_RDATA[2]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hB3FF03FF83FF03FF)) 
+    \T_RDATA[2]_i_3 
+       (.I0(p_0_in[2]),
+        .I1(PADDR[3]),
+        .I2(PADDR[5]),
+        .I3(PSEL),
+        .I4(PADDR[2]),
+        .I5(p_2_in[2]),
+        .O(\T_RDATA[2]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hEEFECCCC00000000)) 
+    \T_RDATA[30]_i_1 
+       (.I0(PADDR[3]),
+        .I1(\T_RDATA[30]_i_2_n_0 ),
+        .I2(MDIO_RST),
+        .I3(PADDR[2]),
+        .I4(PSEL_1),
+        .I5(PADDR_0_sn_1),
+        .O(\T_RDATA[30]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT3 #(
+    .INIT(8'h37)) 
+    \T_RDATA[30]_i_2 
+       (.I0(PADDR[5]),
+        .I1(PSEL),
+        .I2(PADDR[3]),
+        .O(\T_RDATA[30]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h8080000088800000)) 
+    \T_RDATA[31]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(PADDR[5]),
+        .I2(PADDR[3]),
+        .I3(MDIO_ENABLE),
+        .I4(PSEL_1),
+        .I5(PADDR[2]),
+        .O(\T_RDATA[31]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT4 #(
+    .INIT(16'h0155)) 
+    \T_RDATA[31]_i_2 
+       (.I0(\T_RDATA[23]_i_2_n_0 ),
+        .I1(PADDR[0]),
+        .I2(PADDR[1]),
+        .I3(PSEL),
+        .O(PADDR_0_sn_1));
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \T_RDATA[31]_i_3 
+       (.I0(PSEL),
+        .I1(PADDR[4]),
+        .O(PSEL_1));
+  LUT6 #(
+    .INIT(64'hEA0000AA00000000)) 
+    \T_RDATA[3]_i_1 
+       (.I0(\T_RDATA[3]_i_2_n_0 ),
+        .I1(\T_RDATA[3]_i_3_n_0 ),
+        .I2(p_0_in[3]),
+        .I3(PSEL_1),
+        .I4(PSEL_0),
+        .I5(PADDR_0_sn_1),
+        .O(\T_RDATA[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0F0F8F8F0F0FFF3F)) 
+    \T_RDATA[3]_i_2 
+       (.I0(p_1_in[3]),
+        .I1(PADDR[4]),
+        .I2(PSEL),
+        .I3(\csr_mdio_ctl_clk_div_reg[15]_0 [3]),
+        .I4(PADDR[2]),
+        .I5(PADDR[3]),
+        .O(\T_RDATA[3]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \T_RDATA[3]_i_3 
+       (.I0(PADDR[3]),
+        .I1(PSEL),
+        .I2(PADDR[2]),
+        .O(\T_RDATA[3]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h02020202A2020202)) 
+    \T_RDATA[4]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(\T_RDATA[4]_i_2_n_0 ),
+        .I2(PADDR_2_sn_1),
+        .I3(p_0_in[4]),
+        .I4(PADDR[5]),
+        .I5(PADDR_4_sn_1),
+        .O(\T_RDATA[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h73F3F3FF7FF3F3FF)) 
+    \T_RDATA[4]_i_2 
+       (.I0(p_1_in[4]),
+        .I1(PSEL),
+        .I2(PADDR[3]),
+        .I3(PADDR[4]),
+        .I4(PADDR[5]),
+        .I5(\csr_mdio_ctl_clk_div_reg[15]_0 [4]),
+        .O(\T_RDATA[4]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hF444444400000000)) 
+    \T_RDATA[5]_i_1 
+       (.I0(\T_RDATA[5]_i_2_n_0 ),
+        .I1(PADDR_3_sn_1),
+        .I2(\T_RDATA[5]_i_3_n_0 ),
+        .I3(\T_RDATA[13]_i_2_n_0 ),
+        .I4(\csr_mdio_ctl_clk_div_reg[15]_0 [5]),
+        .I5(PADDR_0_sn_1),
+        .O(\T_RDATA[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h5700F7000A000A00)) 
+    \T_RDATA[5]_i_2 
+       (.I0(PADDR[4]),
+        .I1(p_1_in[5]),
+        .I2(PADDR[2]),
+        .I3(PSEL),
+        .I4(p_0_in[5]),
+        .I5(PADDR[5]),
+        .O(\T_RDATA[5]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
+    \T_RDATA[5]_i_3 
+       (.I0(PADDR[5]),
+        .I1(PSEL),
+        .I2(PADDR[3]),
+        .O(\T_RDATA[5]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000F222F2F2)) 
+    \T_RDATA[6]_i_1 
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [6]),
+        .I1(\T_RDATA[28]_i_2_n_0 ),
+        .I2(PADDR_0_sn_1),
+        .I3(\T_RDATA[30]_i_2_n_0 ),
+        .I4(PADDR_4_sn_1),
+        .I5(\T_RDATA[6]_i_2_n_0 ),
+        .O(\T_RDATA[6]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h40C0C0004CC0C000)) 
+    \T_RDATA[6]_i_2 
+       (.I0(p_0_in[6]),
+        .I1(PSEL),
+        .I2(PADDR[2]),
+        .I3(PADDR[3]),
+        .I4(PADDR[5]),
+        .I5(p_1_in[6]),
+        .O(\T_RDATA[6]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  LUT3 #(
+    .INIT(8'h04)) 
+    \T_RDATA[7]_i_1 
+       (.I0(\T_RDATA[28]_i_2_n_0 ),
+        .I1(PADDR[5]),
+        .I2(\T_RDATA[7]_i_2_n_0 ),
+        .O(\T_RDATA[7]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h05F53555F5F53555)) 
+    \T_RDATA[7]_i_2 
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [7]),
+        .I1(p_1_in[7]),
+        .I2(PSEL),
+        .I3(PADDR[3]),
+        .I4(PADDR[2]),
+        .I5(p_0_in[7]),
+        .O(\T_RDATA[7]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0202A20202020202)) 
+    \T_RDATA[8]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(\T_RDATA[8]_i_2_n_0 ),
+        .I2(PADDR_2_sn_1),
+        .I3(p_0_in[8]),
+        .I4(\T_RDATA[18]_i_3_n_0 ),
+        .I5(PADDR[3]),
+        .O(\T_RDATA[8]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h1F00DF003C003C00)) 
+    \T_RDATA[8]_i_2 
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [8]),
+        .I1(PADDR[3]),
+        .I2(PADDR[4]),
+        .I3(PSEL),
+        .I4(p_1_in[8]),
+        .I5(PADDR[5]),
+        .O(\T_RDATA[8]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT5 #(
+    .INIT(32'h0222A222)) 
+    \T_RDATA[9]_i_1 
+       (.I0(PADDR_0_sn_1),
+        .I1(\T_RDATA[9]_i_2_n_0 ),
+        .I2(PADDR[2]),
+        .I3(PSEL),
+        .I4(\T_RDATA[9]_i_3_n_0 ),
+        .O(\T_RDATA[9]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7F77FFFF7FFFFFFF)) 
+    \T_RDATA[9]_i_2 
+       (.I0(PADDR[5]),
+        .I1(PADDR[4]),
+        .I2(p_1_in[9]),
+        .I3(PADDR[3]),
+        .I4(PSEL),
+        .I5(\csr_mdio_ctl_clk_div_reg[15]_0 [9]),
+        .O(\T_RDATA[9]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  LUT5 #(
+    .INIT(32'h70F0E0E0)) 
+    \T_RDATA[9]_i_3 
+       (.I0(PADDR[4]),
+        .I1(PADDR[5]),
+        .I2(PSEL),
+        .I3(p_0_in[9]),
+        .I4(PADDR[3]),
+        .O(\T_RDATA[9]_i_3_n_0 ));
+  FDCE \T_RDATA_reg[0] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(D),
+        .Q(T_RDATA[0]));
+  FDCE \T_RDATA_reg[10] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[10]_i_1_n_0 ),
+        .Q(T_RDATA[10]));
+  FDCE \T_RDATA_reg[11] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[11]_i_1_n_0 ),
+        .Q(T_RDATA[11]));
+  FDCE \T_RDATA_reg[12] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[12]_i_1_n_0 ),
+        .Q(T_RDATA[12]));
+  FDCE \T_RDATA_reg[13] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[13]_i_1_n_0 ),
+        .Q(T_RDATA[13]));
+  FDCE \T_RDATA_reg[14] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[14]_i_1_n_0 ),
+        .Q(T_RDATA[14]));
+  FDCE \T_RDATA_reg[15] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[15]_i_1_n_0 ),
+        .Q(T_RDATA[15]));
+  FDCE \T_RDATA_reg[16] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[16]_i_1_n_0 ),
+        .Q(T_RDATA[16]));
+  FDCE \T_RDATA_reg[17] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[17]_i_1_n_0 ),
+        .Q(T_RDATA[17]));
+  FDCE \T_RDATA_reg[18] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[18]_i_1_n_0 ),
+        .Q(T_RDATA[18]));
+  FDCE \T_RDATA_reg[19] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[19]_i_1_n_0 ),
+        .Q(T_RDATA[19]));
+  FDCE \T_RDATA_reg[1] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[1]_i_1_n_0 ),
+        .Q(T_RDATA[1]));
+  FDCE \T_RDATA_reg[20] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[20]_i_1_n_0 ),
+        .Q(T_RDATA[20]));
+  FDCE \T_RDATA_reg[21] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[21]_i_1_n_0 ),
+        .Q(T_RDATA[21]));
+  FDCE \T_RDATA_reg[22] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[22]_i_1_n_0 ),
+        .Q(T_RDATA[22]));
+  FDCE \T_RDATA_reg[23] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[23]_i_1_n_0 ),
+        .Q(T_RDATA[23]));
+  FDCE \T_RDATA_reg[24] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[24]_i_1_n_0 ),
+        .Q(T_RDATA[24]));
+  FDCE \T_RDATA_reg[25] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[25]_i_1_n_0 ),
+        .Q(T_RDATA[25]));
+  FDCE \T_RDATA_reg[26] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[26]_i_1_n_0 ),
+        .Q(T_RDATA[26]));
+  FDCE \T_RDATA_reg[27] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[27]_i_1_n_0 ),
+        .Q(T_RDATA[27]));
+  FDCE \T_RDATA_reg[28] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[28]_i_1_n_0 ),
+        .Q(T_RDATA[28]));
+  FDCE \T_RDATA_reg[29] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[29]_i_1_n_0 ),
+        .Q(T_RDATA[29]));
+  FDCE \T_RDATA_reg[2] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[2]_i_1_n_0 ),
+        .Q(T_RDATA[2]));
+  FDCE \T_RDATA_reg[30] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[30]_i_1_n_0 ),
+        .Q(T_RDATA[30]));
+  FDCE \T_RDATA_reg[31] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[31]_i_1_n_0 ),
+        .Q(T_RDATA[31]));
+  FDCE \T_RDATA_reg[3] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[3]_i_1_n_0 ),
+        .Q(T_RDATA[3]));
+  FDCE \T_RDATA_reg[4] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[4]_i_1_n_0 ),
+        .Q(T_RDATA[4]));
+  FDCE \T_RDATA_reg[5] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[5]_i_1_n_0 ),
+        .Q(T_RDATA[5]));
+  FDCE \T_RDATA_reg[6] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[6]_i_1_n_0 ),
+        .Q(T_RDATA[6]));
+  FDCE \T_RDATA_reg[7] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[7]_i_1_n_0 ),
+        .Q(T_RDATA[7]));
+  FDCE \T_RDATA_reg[8] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[8]_i_1_n_0 ),
+        .Q(T_RDATA[8]));
+  FDCE \T_RDATA_reg[9] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\T_RDATA[9]_i_1_n_0 ),
+        .Q(T_RDATA[9]));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \count[0]_i_1 
+       (.I0(togPN1_carry__0[0]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[0]));
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[10]_i_1 
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(\count_reg[12] [1]),
+        .O(csr_mdio_ctl_en_reg_1[10]));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[11]_i_1 
+       (.I0(\count_reg[12] [2]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[11]));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[12]_i_1 
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(\count_reg[12] [3]),
+        .O(csr_mdio_ctl_en_reg_1[12]));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[13]_i_1 
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(\count_reg[15] [0]),
+        .O(csr_mdio_ctl_en_reg_1[13]));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[14]_i_1 
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(\count_reg[15] [1]),
+        .O(csr_mdio_ctl_en_reg_1[14]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[15]_i_1 
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(\count_reg[15] [2]),
+        .O(csr_mdio_ctl_en_reg_1[15]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[1]_i_1 
+       (.I0(O[0]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[1]));
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[2]_i_1 
+       (.I0(O[1]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[2]));
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[3]_i_1 
+       (.I0(O[2]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[3]));
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[4]_i_1 
+       (.I0(O[3]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[4]));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[5]_i_1 
+       (.I0(\count_reg[8] [0]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[5]));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[6]_i_1 
+       (.I0(\count_reg[8] [1]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[6]));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[7]_i_1 
+       (.I0(\count_reg[8] [2]),
+        .I1(CO),
+        .I2(MDIO_ENABLE),
+        .O(csr_mdio_ctl_en_reg_1[7]));
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[8]_i_1 
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(\count_reg[8] [3]),
+        .O(csr_mdio_ctl_en_reg_1[8]));
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \count[9]_i_1 
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(\count_reg[12] [0]),
+        .O(csr_mdio_ctl_en_reg_1[9]));
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[0]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[0]),
+        .O(T_WDATA[0]));
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[10]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[10]),
+        .O(T_WDATA[10]));
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[11]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[11]),
+        .O(T_WDATA[11]));
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[12]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[12]),
+        .O(T_WDATA[12]));
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[13]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[13]),
+        .O(T_WDATA[13]));
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[14]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[14]),
+        .O(T_WDATA[14]));
+  LUT5 #(
+    .INIT(32'h10000000)) 
+    \csr_mdio_ctl_clk_div[15]_i_1 
+       (.I0(PADDR[3]),
+        .I1(PADDR[2]),
+        .I2(PSEL),
+        .I3(PWRITE),
+        .I4(PENABLE),
+        .O(csr_mdio_ctl_en11_out));
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[15]_i_2 
+       (.I0(PSEL),
+        .I1(PWDATA[15]),
+        .O(T_WDATA[15]));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \csr_mdio_ctl_clk_div[15]_i_3 
+       (.I0(PRESETn),
+        .O(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[1]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[1]),
+        .O(T_WDATA[1]));
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[2]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[2]),
+        .O(T_WDATA[2]));
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[3]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[3]),
+        .O(T_WDATA[3]));
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[4]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[4]),
+        .O(T_WDATA[4]));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[5]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[5]),
+        .O(T_WDATA[5]));
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[6]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[6]),
+        .O(T_WDATA[6]));
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[7]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[7]),
+        .O(T_WDATA[7]));
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[8]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[8]),
+        .O(T_WDATA[8]));
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_ctl_clk_div[9]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[9]),
+        .O(T_WDATA[9]));
+  FDPE \csr_mdio_ctl_clk_div_reg[0] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .D(T_WDATA[0]),
+        .PRE(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [0]));
+  FDCE \csr_mdio_ctl_clk_div_reg[10] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[10]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [10]));
+  FDCE \csr_mdio_ctl_clk_div_reg[11] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[11]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [11]));
+  FDCE \csr_mdio_ctl_clk_div_reg[12] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[12]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [12]));
+  FDCE \csr_mdio_ctl_clk_div_reg[13] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[13]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [13]));
+  FDCE \csr_mdio_ctl_clk_div_reg[14] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[14]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [14]));
+  FDCE \csr_mdio_ctl_clk_div_reg[15] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[15]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [15]));
+  FDPE \csr_mdio_ctl_clk_div_reg[1] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .D(T_WDATA[1]),
+        .PRE(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [1]));
+  FDCE \csr_mdio_ctl_clk_div_reg[2] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[2]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [2]));
+  FDPE \csr_mdio_ctl_clk_div_reg[3] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .D(T_WDATA[3]),
+        .PRE(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [3]));
+  FDCE \csr_mdio_ctl_clk_div_reg[4] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[4]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [4]));
+  FDCE \csr_mdio_ctl_clk_div_reg[5] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[5]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [5]));
+  FDCE \csr_mdio_ctl_clk_div_reg[6] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[6]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [6]));
+  FDCE \csr_mdio_ctl_clk_div_reg[7] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[7]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [7]));
+  FDCE \csr_mdio_ctl_clk_div_reg[8] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[8]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [8]));
+  FDCE \csr_mdio_ctl_clk_div_reg[9] 
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[9]),
+        .Q(\csr_mdio_ctl_clk_div_reg[15]_0 [9]));
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    csr_mdio_ctl_en_i_1
+       (.I0(PSEL),
+        .I1(PWDATA[27]),
+        .O(T_WDATA[31]));
+  FDCE csr_mdio_ctl_en_reg
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[31]),
+        .Q(MDIO_ENABLE));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    csr_mdio_ctl_ie_rd_i_1
+       (.I0(PWDATA[17]),
+        .I1(PSEL),
+        .O(T_WDATA[17]));
+  FDCE csr_mdio_ctl_ie_rd_reg
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[17]),
+        .Q(p_3_in[17]));
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    csr_mdio_ctl_ie_wr_i_1
+       (.I0(PSEL),
+        .I1(PWDATA[16]),
+        .O(T_WDATA[16]));
+  FDCE csr_mdio_ctl_ie_wr_reg
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[16]),
+        .Q(p_3_in[16]));
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    csr_mdio_ctl_rst_i_1
+       (.I0(PSEL),
+        .I1(PWDATA[26]),
+        .O(T_WDATA[30]));
+  FDCE csr_mdio_ctl_rst_reg
+       (.C(PCLK),
+        .CE(csr_mdio_ctl_en11_out),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[30]),
+        .Q(MDIO_RST));
+  LUT5 #(
+    .INIT(32'h80000000)) 
+    \csr_mdio_rd_addr[4]_i_1 
+       (.I0(PADDR[2]),
+        .I1(PSEL),
+        .I2(PADDR[3]),
+        .I3(PENABLE),
+        .I4(PWRITE),
+        .O(E));
+  FDCE \csr_mdio_rd_addr_reg[0] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[16]),
+        .Q(p_0_in[16]));
+  FDCE \csr_mdio_rd_addr_reg[1] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[17]),
+        .Q(p_0_in[17]));
+  FDCE \csr_mdio_rd_addr_reg[2] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[18]),
+        .Q(p_0_in[18]));
+  FDCE \csr_mdio_rd_addr_reg[3] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[19]),
+        .Q(p_0_in[19]));
+  FDCE \csr_mdio_rd_addr_reg[4] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[20]),
+        .Q(p_0_in[20]));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[0]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(\csr_mdio_rd_data_reg[15]_0 [0]),
+        .O(\csr_mdio_rd_data[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[10]_i_1 
+       (.I0(\csr_mdio_rd_data_reg[15]_0 [10]),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .O(\csr_mdio_rd_data[10]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[11]_i_1 
+       (.I0(\csr_mdio_rd_data_reg[15]_0 [11]),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .O(\csr_mdio_rd_data[11]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[12]_i_1 
+       (.I0(\csr_mdio_rd_data_reg[15]_0 [12]),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .O(\csr_mdio_rd_data[12]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[13]_i_1 
+       (.I0(\csr_mdio_rd_data_reg[15]_0 [13]),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .O(\csr_mdio_rd_data[13]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[14]_i_1 
+       (.I0(\csr_mdio_rd_data_reg[15]_0 [14]),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .O(\csr_mdio_rd_data[14]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h40004044FFFFFFFF)) 
+    \csr_mdio_rd_data[15]_i_1 
+       (.I0(state_mdio__0[1]),
+        .I1(MDIO_GO_RD),
+        .I2(MDIO_DONE),
+        .I3(state_mdio__0[0]),
+        .I4(MDIO_GO_WR),
+        .I5(MDIO_ENABLE),
+        .O(\csr_mdio_rd_data[15]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[15]_i_2 
+       (.I0(\csr_mdio_rd_data_reg[15]_0 [15]),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .O(\csr_mdio_rd_data[15]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[1]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(\csr_mdio_rd_data_reg[15]_0 [1]),
+        .O(\csr_mdio_rd_data[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[2]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(\csr_mdio_rd_data_reg[15]_0 [2]),
+        .O(\csr_mdio_rd_data[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[3]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(\csr_mdio_rd_data_reg[15]_0 [3]),
+        .O(\csr_mdio_rd_data[3]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[4]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(\csr_mdio_rd_data_reg[15]_0 [4]),
+        .O(\csr_mdio_rd_data[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[5]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(\csr_mdio_rd_data_reg[15]_0 [5]),
+        .O(\csr_mdio_rd_data[5]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[6]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(\csr_mdio_rd_data_reg[15]_0 [6]),
+        .O(\csr_mdio_rd_data[6]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[7]_i_1 
+       (.I0(\csr_mdio_rd_data_reg[15]_0 [7]),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .O(\csr_mdio_rd_data[7]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[8]_i_1 
+       (.I0(MDIO_ENABLE),
+        .I1(state_mdio__0[0]),
+        .I2(\csr_mdio_rd_data_reg[15]_0 [8]),
+        .O(\csr_mdio_rd_data[8]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \csr_mdio_rd_data[9]_i_1 
+       (.I0(\csr_mdio_rd_data_reg[15]_0 [9]),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .O(\csr_mdio_rd_data[9]_i_1_n_0 ));
+  FDCE \csr_mdio_rd_data_reg[0] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[0]_i_1_n_0 ),
+        .Q(\csr_mdio_rd_data_reg[0]_0 ));
+  FDCE \csr_mdio_rd_data_reg[10] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[10]_i_1_n_0 ),
+        .Q(p_0_in[10]));
+  FDCE \csr_mdio_rd_data_reg[11] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[11]_i_1_n_0 ),
+        .Q(p_0_in[11]));
+  FDCE \csr_mdio_rd_data_reg[12] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[12]_i_1_n_0 ),
+        .Q(p_0_in[12]));
+  FDCE \csr_mdio_rd_data_reg[13] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[13]_i_1_n_0 ),
+        .Q(p_0_in[13]));
+  FDCE \csr_mdio_rd_data_reg[14] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[14]_i_1_n_0 ),
+        .Q(p_0_in[14]));
+  FDCE \csr_mdio_rd_data_reg[15] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[15]_i_2_n_0 ),
+        .Q(p_0_in[15]));
+  FDCE \csr_mdio_rd_data_reg[1] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[1]_i_1_n_0 ),
+        .Q(p_0_in[1]));
+  FDCE \csr_mdio_rd_data_reg[2] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[2]_i_1_n_0 ),
+        .Q(p_0_in[2]));
+  FDCE \csr_mdio_rd_data_reg[3] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[3]_i_1_n_0 ),
+        .Q(p_0_in[3]));
+  FDCE \csr_mdio_rd_data_reg[4] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[4]_i_1_n_0 ),
+        .Q(p_0_in[4]));
+  FDCE \csr_mdio_rd_data_reg[5] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[5]_i_1_n_0 ),
+        .Q(p_0_in[5]));
+  FDCE \csr_mdio_rd_data_reg[6] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[6]_i_1_n_0 ),
+        .Q(p_0_in[6]));
+  FDCE \csr_mdio_rd_data_reg[7] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[7]_i_1_n_0 ),
+        .Q(p_0_in[7]));
+  FDCE \csr_mdio_rd_data_reg[8] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[8]_i_1_n_0 ),
+        .Q(p_0_in[8]));
+  FDCE \csr_mdio_rd_data_reg[9] 
+       (.C(PCLK),
+        .CE(\csr_mdio_rd_data[15]_i_1_n_0 ),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(\csr_mdio_rd_data[9]_i_1_n_0 ),
+        .Q(p_0_in[9]));
+  FDCE \csr_mdio_rd_phy_reg[0] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[21]),
+        .Q(p_0_in[21]));
+  FDCE \csr_mdio_rd_phy_reg[1] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[22]),
+        .Q(p_0_in[22]));
+  FDCE \csr_mdio_rd_phy_reg[2] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[23]),
+        .Q(p_0_in[23]));
+  FDCE \csr_mdio_rd_phy_reg[3] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[24]),
+        .Q(p_0_in[24]));
+  FDCE \csr_mdio_rd_phy_reg[4] 
+       (.C(PCLK),
+        .CE(E),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[25]),
+        .Q(p_0_in[25]));
+  LUT5 #(
+    .INIT(32'h40FF4000)) 
+    csr_mdio_sts_ack_i_1
+       (.I0(MDIO_ACK),
+        .I1(MDIO_ENABLE),
+        .I2(state_mdio__0[0]),
+        .I3(csr_mdio_sts_ack_i_2_n_0),
+        .I4(p_2_in[2]),
+        .O(csr_mdio_sts_ack_i_1_n_0));
+  LUT6 #(
+    .INIT(64'h55555555FF55FDFD)) 
+    csr_mdio_sts_ack_i_2
+       (.I0(MDIO_ENABLE),
+        .I1(MDIO_GO_WR),
+        .I2(MDIO_GO_RD),
+        .I3(MDIO_DONE),
+        .I4(state_mdio__0[0]),
+        .I5(state_mdio__0[1]),
+        .O(csr_mdio_sts_ack_i_2_n_0));
+  FDCE csr_mdio_sts_ack_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(csr_mdio_sts_ack_i_1_n_0),
+        .Q(p_2_in[2]));
+  LUT6 #(
+    .INIT(64'hB333A3338000A000)) 
+    csr_mdio_sts_done_i_1
+       (.I0(MDIO_ENABLE),
+        .I1(\MDIO_PHYADR[4]_i_1_n_0 ),
+        .I2(MDIO_DONE),
+        .I3(state_mdio__0[0]),
+        .I4(state_mdio__0[1]),
+        .I5(p_2_in[1]),
+        .O(csr_mdio_sts_done_i_1_n_0));
+  FDCE csr_mdio_sts_done_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(csr_mdio_sts_done_i_1_n_0),
+        .Q(p_2_in[1]));
+  LUT6 #(
+    .INIT(64'h5111111150000000)) 
+    csr_mdio_sts_ip_rd_i_1
+       (.I0(csr_mdio_sts_ip_rd_i_2_n_0),
+        .I1(csr_mdio_sts_ip_rd_i_3_n_0),
+        .I2(p_3_in[17]),
+        .I3(MDIO_GO_RD),
+        .I4(MDIO_DONE),
+        .I5(p_2_in[17]),
+        .O(csr_mdio_sts_ip_rd_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
+    csr_mdio_sts_ip_rd_i_2
+       (.I0(PWDATA[18]),
+        .I1(PSEL),
+        .I2(csr_mdio_sts_ip_wr_i_4_n_0),
+        .O(csr_mdio_sts_ip_rd_i_2_n_0));
+  LUT6 #(
+    .INIT(64'h0800000000000000)) 
+    csr_mdio_sts_ip_rd_i_3
+       (.I0(PWDATA[17]),
+        .I1(PADDR[2]),
+        .I2(PADDR[3]),
+        .I3(PSEL),
+        .I4(PWRITE),
+        .I5(PENABLE),
+        .O(csr_mdio_sts_ip_rd_i_3_n_0));
+  FDCE csr_mdio_sts_ip_rd_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(csr_mdio_sts_ip_rd_i_1_n_0),
+        .Q(p_2_in[17]));
+  LUT6 #(
+    .INIT(64'h5111111150000000)) 
+    csr_mdio_sts_ip_wr_i_1
+       (.I0(csr_mdio_sts_ip_wr_i_2_n_0),
+        .I1(csr_mdio_sts_ip_wr_i_3_n_0),
+        .I2(p_3_in[16]),
+        .I3(MDIO_GO_WR),
+        .I4(MDIO_DONE),
+        .I5(p_2_in[16]),
+        .O(csr_mdio_sts_ip_wr_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
+    csr_mdio_sts_ip_wr_i_2
+       (.I0(PWDATA[17]),
+        .I1(PSEL),
+        .I2(csr_mdio_sts_ip_wr_i_4_n_0),
+        .O(csr_mdio_sts_ip_wr_i_2_n_0));
+  LUT6 #(
+    .INIT(64'h0800000000000000)) 
+    csr_mdio_sts_ip_wr_i_3
+       (.I0(PWDATA[16]),
+        .I1(PADDR[2]),
+        .I2(PADDR[3]),
+        .I3(PSEL),
+        .I4(PWRITE),
+        .I5(PENABLE),
+        .O(csr_mdio_sts_ip_wr_i_3_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFD)) 
+    csr_mdio_sts_ip_wr_i_4
+       (.I0(\T_RDATA[17]_i_2_n_0 ),
+        .I1(csr_mdio_sts_ip_wr_i_5_n_0),
+        .I2(PADDR[7]),
+        .I3(PADDR[6]),
+        .I4(PADDR[1]),
+        .I5(PADDR[0]),
+        .O(csr_mdio_sts_ip_wr_i_4_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT4 #(
+    .INIT(16'hBFFF)) 
+    csr_mdio_sts_ip_wr_i_5
+       (.I0(PADDR[3]),
+        .I1(PSEL),
+        .I2(PWRITE),
+        .I3(PENABLE),
+        .O(csr_mdio_sts_ip_wr_i_5_n_0));
+  FDCE csr_mdio_sts_ip_wr_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(csr_mdio_sts_ip_wr_i_1_n_0),
+        .Q(p_2_in[16]));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_wr_addr[2]_i_1 
+       (.I0(PWDATA[18]),
+        .I1(PSEL),
+        .O(T_WDATA[18]));
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_wr_addr[3]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[19]),
+        .O(T_WDATA[19]));
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_wr_addr[4]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[20]),
+        .O(T_WDATA[20]));
+  FDCE \csr_mdio_wr_addr_reg[0] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[16]),
+        .Q(p_1_in[16]));
+  FDCE \csr_mdio_wr_addr_reg[1] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[17]),
+        .Q(p_1_in[17]));
+  FDCE \csr_mdio_wr_addr_reg[2] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[18]),
+        .Q(p_1_in[18]));
+  FDCE \csr_mdio_wr_addr_reg[3] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[19]),
+        .Q(p_1_in[19]));
+  FDCE \csr_mdio_wr_addr_reg[4] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[20]),
+        .Q(p_1_in[20]));
+  LUT5 #(
+    .INIT(32'h00008000)) 
+    \csr_mdio_wr_data[15]_i_1 
+       (.I0(PENABLE),
+        .I1(PWRITE),
+        .I2(PSEL),
+        .I3(PADDR[3]),
+        .I4(PADDR[2]),
+        .O(PENABLE_0));
+  FDCE \csr_mdio_wr_data_reg[0] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[0]),
+        .Q(Q));
+  FDCE \csr_mdio_wr_data_reg[10] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[10]),
+        .Q(p_1_in[10]));
+  FDCE \csr_mdio_wr_data_reg[11] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[11]),
+        .Q(p_1_in[11]));
+  FDCE \csr_mdio_wr_data_reg[12] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[12]),
+        .Q(p_1_in[12]));
+  FDCE \csr_mdio_wr_data_reg[13] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[13]),
+        .Q(p_1_in[13]));
+  FDCE \csr_mdio_wr_data_reg[14] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[14]),
+        .Q(p_1_in[14]));
+  FDCE \csr_mdio_wr_data_reg[15] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[15]),
+        .Q(p_1_in[15]));
+  FDCE \csr_mdio_wr_data_reg[1] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[1]),
+        .Q(p_1_in[1]));
+  FDCE \csr_mdio_wr_data_reg[2] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[2]),
+        .Q(p_1_in[2]));
+  FDCE \csr_mdio_wr_data_reg[3] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[3]),
+        .Q(p_1_in[3]));
+  FDCE \csr_mdio_wr_data_reg[4] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[4]),
+        .Q(p_1_in[4]));
+  FDCE \csr_mdio_wr_data_reg[5] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[5]),
+        .Q(p_1_in[5]));
+  FDCE \csr_mdio_wr_data_reg[6] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[6]),
+        .Q(p_1_in[6]));
+  FDCE \csr_mdio_wr_data_reg[7] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[7]),
+        .Q(p_1_in[7]));
+  FDCE \csr_mdio_wr_data_reg[8] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[8]),
+        .Q(p_1_in[8]));
+  FDCE \csr_mdio_wr_data_reg[9] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[9]),
+        .Q(p_1_in[9]));
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_wr_phy[0]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[21]),
+        .O(T_WDATA[21]));
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_wr_phy[1]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[22]),
+        .O(T_WDATA[22]));
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_wr_phy[2]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[23]),
+        .O(T_WDATA[23]));
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_wr_phy[3]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[24]),
+        .O(T_WDATA[24]));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \csr_mdio_wr_phy[4]_i_1 
+       (.I0(PSEL),
+        .I1(PWDATA[25]),
+        .O(T_WDATA[25]));
+  FDCE \csr_mdio_wr_phy_reg[0] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[21]),
+        .Q(p_1_in[21]));
+  FDCE \csr_mdio_wr_phy_reg[1] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[22]),
+        .Q(p_1_in[22]));
+  FDCE \csr_mdio_wr_phy_reg[2] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[23]),
+        .Q(p_1_in[23]));
+  FDCE \csr_mdio_wr_phy_reg[3] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[24]),
+        .Q(p_1_in[24]));
+  FDCE \csr_mdio_wr_phy_reg[4] 
+       (.C(PCLK),
+        .CE(PENABLE_0),
+        .CLR(\csr_mdio_ctl_clk_div[15]_i_3_n_0 ),
+        .D(T_WDATA[25]),
+        .Q(p_1_in[25]));
+  LUT3 #(
+    .INIT(8'h08)) 
+    \data[0]_i_1 
+       (.I0(MDIO_WDATA[0]),
+        .I1(MDIO_ENABLE),
+        .I2(out[1]),
+        .O(\MDIO_WDATA_reg[15]_0 [0]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[10]_i_1 
+       (.I0(MDIO_WDATA[10]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [9]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [10]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[11]_i_1 
+       (.I0(MDIO_WDATA[11]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [10]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [11]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[12]_i_1 
+       (.I0(MDIO_WDATA[12]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [11]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [12]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[13]_i_1 
+       (.I0(MDIO_WDATA[13]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [12]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [13]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[14]_i_1 
+       (.I0(MDIO_WDATA[14]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [13]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [14]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[15]_i_2 
+       (.I0(MDIO_WDATA[15]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [14]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [15]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[1]_i_1 
+       (.I0(MDIO_WDATA[1]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [0]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [1]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[2]_i_1 
+       (.I0(MDIO_WDATA[2]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [1]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [2]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[3]_i_1 
+       (.I0(MDIO_WDATA[3]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [2]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [3]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[4]_i_1 
+       (.I0(MDIO_WDATA[4]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [3]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [4]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[5]_i_1 
+       (.I0(MDIO_WDATA[5]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [4]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [5]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[6]_i_1 
+       (.I0(MDIO_WDATA[6]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [5]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [6]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[7]_i_1 
+       (.I0(MDIO_WDATA[7]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [6]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [7]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[8]_i_1 
+       (.I0(MDIO_WDATA[8]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [7]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [8]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \data[9]_i_1 
+       (.I0(MDIO_WDATA[9]),
+        .I1(out[0]),
+        .I2(\data_reg[15] [8]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_WDATA_reg[15]_0 [9]));
+  LUT4 #(
+    .INIT(16'h0008)) 
+    \paddr[0]_i_1 
+       (.I0(MDIO_PHYADR),
+        .I1(MDIO_ENABLE),
+        .I2(out[0]),
+        .I3(out[1]),
+        .O(\MDIO_PHYADR_reg[0]_0 ));
+  LUT3 #(
+    .INIT(8'h08)) 
+    \raddr[0]_i_1 
+       (.I0(MDIO_REGADR[0]),
+        .I1(MDIO_ENABLE),
+        .I2(out[1]),
+        .O(\MDIO_REGADR_reg[4]_0 [0]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \raddr[1]_i_1 
+       (.I0(MDIO_REGADR[1]),
+        .I1(out[1]),
+        .I2(\raddr_reg[4] [0]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR_reg[4]_0 [1]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \raddr[2]_i_1 
+       (.I0(MDIO_REGADR[2]),
+        .I1(out[1]),
+        .I2(\raddr_reg[4] [1]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR_reg[4]_0 [2]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \raddr[3]_i_1 
+       (.I0(MDIO_REGADR[3]),
+        .I1(out[1]),
+        .I2(\raddr_reg[4] [2]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR_reg[4]_0 [3]));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \raddr[4]_i_2 
+       (.I0(MDIO_REGADR[4]),
+        .I1(out[1]),
+        .I2(\raddr_reg[4] [3]),
+        .I3(MDIO_ENABLE),
+        .O(\MDIO_REGADR_reg[4]_0 [4]));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    togN_i_1
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(togPN),
+        .O(togN));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    togPN1_carry_i_1
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [7]),
+        .I1(togPN1_carry__0[7]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [6]),
+        .I3(togPN1_carry__0[6]),
+        .O(DI[3]));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    togPN1_carry_i_1__0
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [15]),
+        .I1(togPN1_carry__0[15]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [14]),
+        .I3(togPN1_carry__0[14]),
+        .O(\csr_mdio_ctl_clk_div_reg[15]_1 [3]));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    togPN1_carry_i_2
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [5]),
+        .I1(togPN1_carry__0[5]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [4]),
+        .I3(togPN1_carry__0[4]),
+        .O(DI[2]));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    togPN1_carry_i_2__0
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [13]),
+        .I1(togPN1_carry__0[13]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [12]),
+        .I3(togPN1_carry__0[12]),
+        .O(\csr_mdio_ctl_clk_div_reg[15]_1 [2]));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    togPN1_carry_i_3
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [3]),
+        .I1(togPN1_carry__0[3]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [2]),
+        .I3(togPN1_carry__0[2]),
+        .O(DI[1]));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    togPN1_carry_i_3__0
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [11]),
+        .I1(togPN1_carry__0[11]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [10]),
+        .I3(togPN1_carry__0[10]),
+        .O(\csr_mdio_ctl_clk_div_reg[15]_1 [1]));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    togPN1_carry_i_4
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [1]),
+        .I1(togPN1_carry__0[1]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [0]),
+        .I3(togPN1_carry__0[0]),
+        .O(DI[0]));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    togPN1_carry_i_4__0
+       (.I0(\csr_mdio_ctl_clk_div_reg[15]_0 [9]),
+        .I1(togPN1_carry__0[9]),
+        .I2(\csr_mdio_ctl_clk_div_reg[15]_0 [8]),
+        .I3(togPN1_carry__0[8]),
+        .O(\csr_mdio_ctl_clk_div_reg[15]_1 [0]));
+  LUT3 #(
+    .INIT(8'h82)) 
+    togPN_i_1
+       (.I0(MDIO_ENABLE),
+        .I1(CO),
+        .I2(togPN),
+        .O(csr_mdio_ctl_en_reg_3));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  LUT3 #(
+    .INIT(8'h04)) 
+    togP_i_1
+       (.I0(CO),
+        .I1(MDIO_ENABLE),
+        .I2(togPN),
+        .O(togP11_out));
+endmodule
+`ifndef GLBL
+`define GLBL
+`timescale  1 ps / 1 ps
+
+module glbl;// ();
+
+    parameter ROC_WIDTH = 100000;
+    parameter TOC_WIDTH = 0;
+
+//--------   STARTUP Globals --------------
+    wire GSR;
+    wire GTS;
+    wire GWE;
+    wire PRLD;
+    tri1 p_up_tmp;
+    tri (weak1, strong0) PLL_LOCKG = p_up_tmp;
+
+    wire PROGB_GLBL;
+    wire CCLKO_GLBL;
+    wire FCSBO_GLBL;
+    wire [3:0] DO_GLBL;
+    wire [3:0] DI_GLBL;
+   
+    reg GSR_int;
+    reg GTS_int;
+    reg PRLD_int;
+
+//--------   JTAG Globals --------------
+    wire JTAG_TDO_GLBL;
+    wire JTAG_TCK_GLBL;
+    wire JTAG_TDI_GLBL;
+    wire JTAG_TMS_GLBL;
+    wire JTAG_TRST_GLBL;
+
+    reg JTAG_CAPTURE_GLBL;
+    reg JTAG_RESET_GLBL;
+    reg JTAG_SHIFT_GLBL;
+    reg JTAG_UPDATE_GLBL;
+    reg JTAG_RUNTEST_GLBL;
+
+    reg JTAG_SEL1_GLBL = 0;
+    reg JTAG_SEL2_GLBL = 0 ;
+    reg JTAG_SEL3_GLBL = 0;
+    reg JTAG_SEL4_GLBL = 0;
+
+    reg JTAG_USER_TDO1_GLBL = 1'bz;
+    reg JTAG_USER_TDO2_GLBL = 1'bz;
+    reg JTAG_USER_TDO3_GLBL = 1'bz;
+    reg JTAG_USER_TDO4_GLBL = 1'bz;
+
+    assign (strong1, weak0) GSR = GSR_int;
+    assign (strong1, weak0) GTS = GTS_int;
+    assign (weak1, weak0) PRLD = PRLD_int;
+
+    initial begin
+	GSR_int = 1'b1;
+	PRLD_int = 1'b1;
+	#(ROC_WIDTH)
+	GSR_int = 1'b0;
+	PRLD_int = 1'b0;
+    end
+
+    initial begin
+	GTS_int = 1'b1;
+	#(TOC_WIDTH)
+	GTS_int = 1'b0;
+    end
+
+endmodule
+`endif

@@ -1,0 +1,21 @@
+//-----------------------------------------
++notimingchecks
++libext+.v
+-y $XILINX_VIVADO/data/verilog/src/unisims
+-y $XILINX_VIVADO/data/verilog/src/xeclib
+//--------------------------------------------------------------------
+   $XILINX_VIVADO/data/verilog/src/glbl.v
+//--------------------------------------------------------------------
++define+VCD+SIM+VIVADO
+//--------------------------------------------------------------------
+./sim_define.v
+//-----------------------------------------
++incdir+../../bench/verilog
+        ../../bench/verilog/top.v
+        ../../bench/verilog/tester_gmii.v
+//-----------------------------------------
+//+incdir+../../fifo_async/$FPGA_TYPE/$VIVADO
+//+incdir+../../fifo_sync/$FPGA_TYPE/$VIVADO
++incdir+../../rtl/verilog
+        ../../rtl/verilog/gig_eth_hsr_modelsim_vivado.vp
+//-----------------------------------------

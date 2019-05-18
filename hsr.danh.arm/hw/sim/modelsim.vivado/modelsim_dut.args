@@ -1,0 +1,34 @@
+//--------------------------------------------------------------------
++incdir+../../design/verilog
+        ../../design/verilog/hsr_danh_axi.v
+//--------------------------------------------------------------------
++incdir+$FIP_HOME/amba_axi/rtl/verilog
+        $FIP_HOME/amba_axi/rtl/verilog/axi_switch_m2s5.v
+//--------------------------------------------------------------------
++incdir+$FIP_HOME/mem_axi/rtl/verilog
++incdir+$FIP_HOME/mem_axi/bram_simple_dual_port/$FPGA_TYPE/$VIVADO
+        $FIP_HOME/mem_axi/rtl/verilog/bram_axi.v
+//--------------------------------------------------------------------
++incdir+$FIP_HOME/mem_axi_dual/rtl/verilog
++incdir+$FIP_HOME/mem_axi_dual/bram_true_dual_port/$FPGA_TYPE/$VIVADO
+        $FIP_HOME/mem_axi_dual/rtl/verilog/bram_axi_dual.v
+//--------------------------------------------------------------------
+//+incdir+$FIP_HOME/gig_eth_mac/rtl/verilog/gig_eth_mac_core
+//+incdir+$FIP_HOME/gig_eth_mac/fifo_async/$FPGA_TYPE/$VIVADO
++incdir+$FIP_HOME/gig_eth_mac/rtl/verilog
+        $FIP_HOME/gig_eth_mac/rtl/verilog/gig_eth_mac_danh_axi_modelsim_vivado.vp
+//--------------------------------------------------------------------
+//+incdir+$FIP_HOME/gig_eth_hsr/fifo_async/$FPGA_TYPE/$VIVADO
+//+incdir+$FIP_HOME/gig_eth_hsr/fifo_sync/$FPGA_TYPE/$VIVADO
++incdir+$FIP_HOME/gig_eth_hsr/rtl/verilog
+        $FIP_HOME/gig_eth_hsr/rtl/verilog/gig_eth_hsr_danh_modelsim_vivado.vp
+//--------------------------------------------------------------------
++incdir+$FIP_HOME/axi_to_apb/rtl/verilog
+        $FIP_HOME/axi_to_apb/rtl/verilog/axi_to_apb_s3.v
+//--------------------------------------------------------------------
++incdir+$FIP_HOME/mdio_amba/rtl/verilog
+        $FIP_HOME/mdio_amba/rtl/verilog/mdio_apb_modelsim_vivado.vp
+//--------------------------------------------------------------------
++incdir+$FIP_HOME/gpio_amba/rtl/verilog
+        $FIP_HOME/gpio_amba/rtl/verilog/gpio_apb.v
+//--------------------------------------------------------------------

@@ -1,0 +1,22 @@
+//-----------------------------------------
++notimingchecks
++libext+.v
+-y $XILINX/verilog/src
+-y $XILINX/verilog/src/unisims
+-y $XILINX/verilog/src/XilinxCoreLib
+//--------------------------------------------------------------------
+   $XILINX/verilog/src/glbl.v
+//-----------------------------------------
++define+VCD+SIM+ISE
+//--------------------------------------------------------------------
+./sim_define.v
+//-----------------------------------------
++incdir+../../bench/verilog
+        ../../bench/verilog/top.v
+        ../../bench/verilog/tester_gmii.v
+//-----------------------------------------
+//+incdir+../../fifo_async/v6/ise14
+//+incdir+../../fifo_sync/v6/ise14
++incdir+../../rtl/verilog
+        ../../rtl/verilog/gig_eth_hsr_modelsim_ise.vp
+//-----------------------------------------

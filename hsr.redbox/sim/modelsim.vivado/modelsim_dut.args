@@ -1,0 +1,12 @@
+//--------------------------------------------------------------------
++incdir+../../design/verilog
++incdir+$FIP_HOME/gig_eth_hsr/rtl/verilog
++incdir+$FIP_HOME/gig_eth_hsr/fifo_async/$FPGA_TYPE/$VIVADO
++incdir+$FIP_HOME/gig_eth_hsr/fifo_sync/$FPGA_TYPE/$VIVADO
+        ../../design/verilog/fpga.v
+//--------------------------------------------------------------------
+//+incdir+$FIP_HOME/gig_eth_hsr/fifo_async/$FPGA_TYPE/$VIVADO
+//+incdir+$FIP_HOME/gig_eth_hsr/fifo_sync/$FPGA_TYPE/$VIVADO
++incdir+$FIP_HOME/gig_eth_hsr/rtl/verilog
+        $FIP_HOME/gig_eth_hsr/rtl/verilog/gig_eth_hsr_redbox_modelsim_vivado.vp
+//--------------------------------------------------------------------

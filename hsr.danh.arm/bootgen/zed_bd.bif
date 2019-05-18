@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]./../sw.arm/fsbl/fsbl_0.elf
+	../hw/impl/zedboard.lpc/zed_bd_wrapper.bit
+	../sw.arm/eth_send_receive/eth_send_receive.elf
+}

@@ -1,0 +1,30 @@
+verilog work \
+        -d SIM -d VIVADO -d AMBA_AXI4 -d XSIM_PROTECTED\
+        -i ../../bench/verilog\
+        -i ../../design/verilog\
+        -i $FIP_HOME/amba_axi/rtl/verilog\
+        -i $FIP_HOME/mem_axi/rtl/verilog\
+        -i $FIP_HOME/mem_axi/bram_simple_dual_port/$FPGA_TYPE/$VIVADO\
+        -i $FIP_HOME/mem_axi_dual/rtl/verilog\
+        -i $FIP_HOME/mem_axi_dual/bram_true_dual_port/$FPGA_TYPE/$VIVADO\
+        -i $FIP_HOME/gig_eth_mac/rtl/verilog\
+        -i $FIP_HOME/gig_eth_mac/rtl/verilog/gig_eth_mac_core\
+        -i $FIP_HOME/gig_eth_mac/fifo_async/$FPGA_TYPE/$VIVADO\
+        -i $FIP_HOME/gig_eth_hsr/rtl/verilog\
+        -i $FIP_HOME/gig_eth_hsr/fifo_async/$FPGA_TYPE/$VIVADO\
+        -i $FIP_HOME/gig_eth_hsr/fifo_sync/$FPGA_TYPE/$VIVADO\
+        -i $FIP_HOME/axi_to_apb/rtl/verilog\
+        -i $FIP_HOME/mdio_amba/rtl/verilog\
+        -i $FIP_HOME/gpio_amba/rtl/verilog\
+           ./sim_define.v\
+           ../../design/verilog/hsr_danh_axi.v\
+           $FIP_HOME/amba_axi/rtl/verilog/axi_switch_m2s5.v\
+           $FIP_HOME/mem_axi/rtl/verilog/bram_axi.v\
+           $FIP_HOME/mem_axi_dual/rtl/verilog/bram_axi_dual.v\
+           $FIP_HOME/gig_eth_mac/rtl/verilog/gig_eth_mac_danh_axi_xsim.vp\
+           $FIP_HOME/gig_eth_hsr/rtl/verilog/gig_eth_hsr_danh_xsim.vp\
+           $FIP_HOME/axi_to_apb/rtl/verilog/axi_to_apb_s3.v\
+           $FIP_HOME/mdio_amba/rtl/verilog/mdio_apb_xsim.vp\
+           $FIP_HOME/gpio_amba/rtl/verilog/gpio_apb.v\
+           ../../bench/verilog/top.v\
+           ../../bench/verilog/hsr_node.v
