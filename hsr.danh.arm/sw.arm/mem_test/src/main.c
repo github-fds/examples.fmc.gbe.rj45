@@ -54,9 +54,10 @@
 
 #define BRAM0_ADDR 0x60000000
 #define BRAM1_ADDR 0x40000000
+#define BRAM2_ADDR 0x41000000
+#define BRAM3_ADDR 0x42000000
 #define HSR_ADDR   0x4C010000
 #define MDIO_ADDR  0x4C000000
-
 
 int
 MemTest(unsigned saddr, unsigned depth) {
@@ -89,7 +90,11 @@ int main()
     xil_printf("Xilinx BRAM0 Test. \n\r");
     MemTest(BRAM0_ADDR, depth);
     xil_printf("User BRAM1 Test. \n\r");
-    MemTest(BRAM1_ADDR, depth);
+    MemTest(BRAM2_ADDR, depth);
+    xil_printf("Xilinx BRAM2 Test. \n\r");
+    MemTest(BRAM0_ADDR, depth);
+    xil_printf("User BRAM3 Test. \n\r");
+    MemTest(BRAM3_ADDR, depth);
 
     addr = MDIO_ADDR+0x20;
     MEM_READ (addr, rdata);

@@ -6,7 +6,7 @@
 //------------------------------------------------------------------------------
 // gig_eth_mac_api.c
 //------------------------------------------------------------------------------
-// VERSION = 2019.03.01.
+// VERSION = 2019.05.20.
 //------------------------------------------------------------------------------
 //#ifndef COMPACT_CODE
 //#endif
@@ -16,7 +16,6 @@
 #include <string.h>
 #include "defines_system.h"
 #include "gig_eth_mac_api.h"
-#include "gig_eth_hsr_api.h"
 
 //------------------------------------------------------------------------------
 // Register access macros
@@ -27,7 +26,7 @@
 
 //------------------------------------------------------------------------------
 #if !defined(ADDR_GBE_MAC_START)
-#define ADDR_GBE_MAC_START   0x4C010000
+#define ADDR_GBE_MAC_START   0x43000000
 #endif
 #define CSRA_GBE_BASE        ADDR_GBE_MAC_START
 #define CSRA_GBE_CONTROL    (CSRA_GBE_BASE+0x00)
@@ -592,8 +591,8 @@ printf("%s() tx REGWR(0x%08X, 0x%08X)\n", __FUNCTION__, CSRA_GBE_RX_DES, (unsign
 
 //--------------------------------------------------------------------
 // keep other bits
-// <0:disable, 0:read, >0:enable
-int gig_eth_interrupt( int enable )
+// =0:disable, !=0:enable
+int gig_eth_mac_interrupt( int enable )
 {
     volatile uint32_t value;
     REGRD(CSRA_GBE_CONTROL, value);
@@ -1138,6 +1137,7 @@ void gig_eth_mac_csr_check ( void )
 //------------------------------------------------------------------------------
 // Revision History
 //
+// 2019.05.20: 'gig_eth_mac_interrupt()' <- gig_eth_interrupt()
 // 2019.03.01: 'gig_eth_mac_set_config()' bug-fixed.
 //             'gig_eth_mac_get_config()' bug-fixed.
 // 2018.10.17: 'gig_eth_mac_rx_get_items()' bug-fixed for full case.

@@ -1,6 +1,7 @@
 @ECHO OFF
 
-SET TOPS=gig_eth_hsr_fifo_sync_36x512
+SET TOPS=gig_eth_hsr_fifo_sync_36x16^
+         gig_eth_hsr_fifo_sync_36x512
 
 @FOR %%F in ( %TOPS% ) DO @ (
      ECHO *** %%F

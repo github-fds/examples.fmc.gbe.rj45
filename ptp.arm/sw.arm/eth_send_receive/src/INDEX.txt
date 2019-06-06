@@ -1,0 +1,28 @@
+
+ main.c
+   +-- platform_config.h
+   +-- platform.c/h
+   |
+   +-- defines_system.h
+   +-- monitor.c
+          |
+          +-- monitor_version.h
+          +-- monitor_command.c/h
+          |
+          +-- monitor_cmd_etc.c/h
+          +-- monitor_cmd_memory.c/h
+          |      |
+          |      +-- mem_api.c/h
+          |
+          +-- monitor_cmd_mac.c/h
+                 |
+                 +-- mac_api.c/h
+                        |
+                        +-- eth_ip_udp_data_type.h
+                        +-- eth_ip_udp_pkt.c/h
+                        +-- gig_eth_mac_api.c/h
+                        +-- gig_eth_hsr_api.c/h
+                        +-- ptpv2_lite_api.c/h
+
+ strtoi.c
+ strtoi.h

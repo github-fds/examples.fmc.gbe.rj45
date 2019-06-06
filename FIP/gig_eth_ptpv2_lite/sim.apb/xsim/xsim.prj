@@ -1,0 +1,9 @@
+verilog work \
+        -d SIM -d VIVADO\
+	-i ../../bench.apb/verilog\
+        -i ../../fifo_async/$FPGA_TYPE/$VIVADO\
+        -i ../../rtl/verilog\
+           ./sim_define.v\
+           ../../bench.apb/verilog/top.v\
+           ../../rtl/verilog/gig_eth_ptpv2_lite_apb_xsim.vp
+

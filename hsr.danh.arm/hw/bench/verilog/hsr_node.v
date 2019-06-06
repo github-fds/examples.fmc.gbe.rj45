@@ -74,39 +74,39 @@ module hsr_node
    localparam AXI_WIDTH_AD=32    // address width
             , AXI_WIDTH_DA=32    // data width
             , AXI_WIDTH_DS=(AXI_WIDTH_DA/8);
-   wire                      s_axi_aresetn; // output from fpga
-   wire                      s_axi_aclk   ; // output from fpga
-   wire  [AXI_WIDTH_AD-1:0]  s_axi_awaddr ;
-   wire  [ 7:0]              s_axi_awlen  ;
-   wire                      s_axi_awlock ;
-   wire  [ 2:0]              s_axi_awsize ;
-   wire  [ 1:0]              s_axi_awburst;
-   wire  [ 3:0]              s_axi_awcache;
-   wire  [ 2:0]              s_axi_awprot ;
-   wire                      s_axi_awvalid;
-   wire                      s_axi_awready;
-   wire  [AXI_WIDTH_DA-1:0]  s_axi_wdata  ;
-   wire  [AXI_WIDTH_DS-1:0]  s_axi_wstrb  ;
-   wire                      s_axi_wlast  ;
-   wire                      s_axi_wvalid ;
-   wire                      s_axi_wready ;
-   wire  [ 1:0]              s_axi_bresp  ;
-   wire                      s_axi_bvalid ;
-   wire                      s_axi_bready ;
-   wire  [AXI_WIDTH_AD-1:0]  s_axi_araddr ;
-   wire  [ 7:0]              s_axi_arlen  ;
-   wire                      s_axi_arlock ;
-   wire  [ 2:0]              s_axi_arsize ;
-   wire  [ 1:0]              s_axi_arburst;
-   wire  [ 3:0]              s_axi_arcache;
-   wire  [ 2:0]              s_axi_arprot ;
-   wire                      s_axi_arvalid;
-   wire                      s_axi_arready;
-   wire  [AXI_WIDTH_DA-1:0]  s_axi_rdata  ;
-   wire  [ 1:0]              s_axi_rresp  ;
-   wire                      s_axi_rlast  ;
-   wire                      s_axi_rvalid ;
-   wire                      s_axi_rready ;
+   wire                        s_axi_aresetn; // output from fpga
+   wire                        s_axi_aclk   ; // output from fpga
+   wire  [AXI_WIDTH_AD-1:0]    s_axi_awaddr ;
+   wire  [ 7:0]                s_axi_awlen  ;
+   wire                        s_axi_awlock ;
+   wire  [ 2:0]                s_axi_awsize ;
+   wire  [ 1:0]                s_axi_awburst;
+   wire  [ 3:0]                s_axi_awcache;
+   wire  [ 2:0]                s_axi_awprot ;
+   wire                        s_axi_awvalid;
+   wire                        s_axi_awready;
+   wire  [AXI_WIDTH_DA-1:0]    s_axi_wdata  ;
+   wire  [AXI_WIDTH_DS-1:0]    s_axi_wstrb  ;
+   wire                        s_axi_wlast  ;
+   wire                        s_axi_wvalid ;
+   wire                        s_axi_wready ;
+   wire  [ 1:0]                s_axi_bresp  ;
+   wire                        s_axi_bvalid ;
+   wire                        s_axi_bready ;
+   wire  [AXI_WIDTH_AD-1:0]    s_axi_araddr ;
+   wire  [ 7:0]                s_axi_arlen  ;
+   wire                        s_axi_arlock ;
+   wire  [ 2:0]                s_axi_arsize ;
+   wire  [ 1:0]                s_axi_arburst;
+   wire  [ 3:0]                s_axi_arcache;
+   wire  [ 2:0]                s_axi_arprot ;
+   wire                        s_axi_arvalid;
+   wire                        s_axi_arready;
+   wire  [AXI_WIDTH_DA-1:0]    s_axi_rdata  ;
+   wire  [ 1:0]                s_axi_rresp  ;
+   wire                        s_axi_rlast  ;
+   wire                        s_axi_rvalid ;
+   wire                        s_axi_rready ;
    //---------------------------------------------------------------------------
    hsr_danh_axi #(.FPGA_FAMILY(FPGA_FAMILY)
                  ,.TXCLK_INV(TXCLK_INV))

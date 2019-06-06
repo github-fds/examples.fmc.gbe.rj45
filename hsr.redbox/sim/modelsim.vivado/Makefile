@@ -28,13 +28,13 @@ ifeq ($(ARCH),Linux)
   else
         PLATFORM= linux
   endif
-else ifeq ($(findstring CYGWIN_NT,$(ARCH)),CYGWIN_NT)
+else ifeq ($(findstring CYGWIN,$(ARCH)),CYGWIN)
   ifeq ($(MACH),x86_64)
         PLATFORM= cygwin64
   else
         PLATFORM= cygwin
   endif
-else ifeq ($(findstring MINGW32_NT,$(ARCH)),MINGW32_NT)
+else ifeq ($(findstring MINGW,$(ARCH)),MINGW)
   ifeq ($(MACH),x86_64)
         PLATFORM= mingw64
   else

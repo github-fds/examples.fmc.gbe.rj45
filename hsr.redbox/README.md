@@ -1,5 +1,5 @@
 # RedBox with <a href="http://www.future-ds.com/en/products.html#FMC_GBE_RJ45" target="_blank">FMC-GbE-RJ45</a>
-This example uses two **RedBox**s (*Redundancy Box*) as shown in the picture below, in which each RedBox duplicates packets receved from its upstream port.
+This example uses two **RedBox**es (*Redundancy Box*) as shown in the picture below, in which each RedBox duplicates packets received from its upstream port.
 
 ![RedBox Example structure](./doc/images/hsr_redbox.png "RedBox Example structure")
 
@@ -114,7 +114,7 @@ To see how it works using HDL simulator.
 </details>
 
 ### 3.2 HW simulation
-This step run simulation in order to verify functionality,
+This step runs simulation in order to verify functionality,
 where a few number of HSR nodes are connected to build HSR ring
 and each HSR node consists of tester and the design for PL.
 
@@ -220,9 +220,11 @@ Connect JTAG port.
 HW bitstream can be stored in SD Card, and
 this method makes the board start automatically when turned on.
 
-  1. Prepare SD Card image
+  1. Prepare SD Card image<br>
+     ```
      $ cd hw/pnr/vivado.zedboard.lpc/bootgen
      $ make
+     ```
   2. Copy 'BOOT.bin' to the SD Card (It should be FAT32 file system.)
      * Insert this SD Card into the ZedBoard
      * Make sure setting of jumper: JP-7/8/9/10/11 = G/G/V/V/G
@@ -247,7 +249,7 @@ This example accesses a web-page over the HSR network.
 Simply install Apache.  <a href="https://www.raspberrypi.org/documentation/remote-access/web-server/apache.md" target="_blank">Refer to this page</a>.
 ```
 $ sudo apt-get update
-$ sudo apt-get install apache -y
+$ sudo apt-get install apache2 -y
 ```
 
 New web-page can be installed by replacing following file.
@@ -278,7 +280,6 @@ Change 'webcontrol_localhost' to OFF.
 Set 'quality' to 100.
 Set 'width' & 'height' to 640 & 480.
 Set 'post_capture' to 5.
-Press ctrl + x to exit. Type y to save and enter to conform.
 ```
 
 ```
@@ -286,6 +287,7 @@ $ sudo service motion restart
 $ sudo motion
 ```
 
+Now this web-cam can be accessed over inter-net by opening following site.
 ```
 192.168.1.152:8081
 ```

@@ -17,6 +17,10 @@ if { [file exists $::env(zELF)] == 0 } {
       exit
 }
 
+#set env(TERM) {xterm+256color}
+#set $env(TERM) {xterm+256color}
+#set $::env(TERM) {xterm+256color}
+#puts "=========$::env(TERM)==="
 # connect to target
 connect -url tcp:127.0.0.1:3121
 # set target core

@@ -61,6 +61,7 @@ clean:
 	@/bin/rm -f  vivado_pid*.str
 	@/bin/rm -f  vivado_pid*.zip
 	@/bin/rm -f  hs_err_pid4251.log
+	@if [ -d $(zWORKSPACE)_tmp ]; then /bin/rm -fr $(zWORKSPACE)_tmp; fi
 	@if [ -d .Xil ]; then /bin/rm -fr .Xil; fi
 
 cleanup clobber: clean
@@ -70,5 +71,8 @@ cleanup clobber: clean
 	@if [ -f $(zDIR_SRC)/.project ]; then /bin/rm -fr $(zDIR_SRC)/.project; fi
 
 cleanupall: cleanup
+	/bin/rm -f src/platform.c
+	/bin/rm -f src/platform_config.h
+	/bin/rm -f src/platform.h
 
 #-------------------------------------------------------------------------------

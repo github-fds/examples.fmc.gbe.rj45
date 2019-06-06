@@ -1,0 +1,12 @@
+
+mac_ptp_axi_zed.v
+   |
+   +-- defines_system.v
+   +-- clkmgra.v
+   +-- clkmgra_gtx125mhz.v
+   +-- dut.v
+          |
+          +-- dut_axi_bus.v
+          +-- dut_apb_bus.v
+          +-- dut_axi_peri.v
+          +-- dut_apb_peri.v

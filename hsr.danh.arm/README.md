@@ -236,7 +236,7 @@ These blocks can be prepared by <a href="https://github.com/adki/gen_amba" targe
 </details>
 
 ### 4.2 HW simulation
-This step run simulation in order to verify functionality,
+This step runs simulation in order to verify functionality,
 where a few number of HSR nodes are connected to build HSR ring
 and each HSR node consists of tester and the design for PL.
 
@@ -383,12 +383,16 @@ this method needs to do again each time turning on the board.
 HW bitstream and SW binary can be stored in SD Card, and
 this method makes the board start automatically when turned on.
 
-  1. Prepare FSBL (First Stage Boot Loader)
+  1. Prepare FSBL (First Stage Boot Loader)<br>
+     ```
      $ cd sw.arm/fsbl
      $ make
-  2. Prepare SD Card image
+     ```
+  2. Prepare SD Card image<br>
+     ```
      $ cd bootgen
      $ make
+     ```
   3. Copy 'BOOT.bin' to the SD Card (It should be FAT32 file system.)
      * Insert this SD Card into the ZedBoard
      * Make sure setting of jumper: JP-7/8/9/10/11 = G/G/V/V/G

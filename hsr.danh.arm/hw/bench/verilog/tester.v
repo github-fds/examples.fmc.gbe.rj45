@@ -93,15 +93,15 @@ module tester
 );
      //-----------------------------------------------------------
      reg  [AXI_WIDTH_CID-1:0] MID=AXI_MST_ID;
-     reg  [AXI_WIDTH_ID-1:0]  AWID='h0;
-     reg  [AXI_WIDTH_ID-1:0]  WID='h0;
-     reg  [AXI_WIDTH_ID-1:0]  BID='h0;
-     reg  [AXI_WIDTH_ID-1:0]  ARID='h0;
-     reg  [AXI_WIDTH_ID-1:0]  RID='h0;
+     reg  [AXI_WIDTH_ID-1:0]  AWID; //='h0;
+     reg  [AXI_WIDTH_ID-1:0]  WID ; //='h0;
+     reg  [AXI_WIDTH_ID-1:0]  BID ; //='h0;
+     reg  [AXI_WIDTH_ID-1:0]  ARID; //='h0;
+     reg  [AXI_WIDTH_ID-1:0]  RID ; //='h0;
      //-----------------------------------------------------------
      always @ (posedge ACLK) begin
-          if (AWVALID&AWREADY) BID <= AWID;
-          if (ARVALID&ARREADY) RID <= ARID;
+          if ((AWVALID==1'b1)&&(AWREADY==1'b1)) BID <= AWID;
+          if ((ARVALID==1'b1)&&(ARREADY==1'b1)) RID <= ARID;
      end
      //-----------------------------------------------------------
      `include "axi_tasks.v"

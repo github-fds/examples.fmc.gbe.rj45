@@ -26,5 +26,6 @@
 //+incdir+../../../gig_eth_mac/fifo_async/$FPGA_TYPE/$VIVADO
 //+incdir+../../../gig_eth_mac/rtl/verilog/gig_eth_mac_core
 +incdir+../../../gig_eth_mac/rtl/verilog
+//        ../../../gig_eth_mac/rtl/verilog/gig_eth_mac_axi.v
         ../../../gig_eth_mac/rtl/verilog/gig_eth_mac_axi_modelsim_vivado.vp
 //-----------------------------------------

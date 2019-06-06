@@ -192,7 +192,9 @@ void gig_eth_hsr_csr_check ( void )
      uint32_t value;
      int perf=0;
 
-     read_and_check(CSRA_HSR_VERSION     , "VERSION     ", 0x20181001);
+     REGRD(CSRA_HSR_VERSION,value);
+     printf("HSR %10s A=0x%08X D=0x%08X\n", "VERSION     ", CSRA_HSR_VERSION, (unsigned int)value);
+   //read_and_check(CSRA_HSR_VERSION     , "VERSION     ", 0x20181001);
      read_and_check(CSRA_HSR_MAC_ADDR0   , "MAC_ADDR0   ", 0x56341202);
      read_and_check(CSRA_HSR_MAC_ADDR1   , "MAC_ADDR1   ", 0x00000078);
      read_and_check(CSRA_HSR_HSR_NET_ID  , "HSR_NET_ID  ", 0x00000000);

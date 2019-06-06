@@ -18,6 +18,9 @@ sim:
 	xsim top -t xsim_run.tcl
 #	xsim top -gui -t xsim_run.tcl
 
+wave:
+	gtkwave wave.vcd
+
 clean:
 	/bin/rm -f  top.wdb
 	/bin/rm -f  wave.vcd
